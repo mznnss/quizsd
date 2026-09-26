@@ -168,58 +168,120 @@
   </main>
 
   <script>
-    // --- DATABASE SOAL TERPADU ---
+    // --- DATABASE SOAL FULL (95 SOAL KISI-KISI) ---
     const allQuizData = {
       matematika: [
         { id: 1, type: 'mcq', question: 'Perhatikan bilangan dua angka berikut! Angka 4 pada bilangan tersebut menempati nilai tempat...', illustration: '[ 48 ]', options: ['Ratusan', 'Puluhan', 'Satuan'], answer: 1, explanation: 'Angka 4 bernilai 40 (Puluhan), dan angka 8 bernilai Satuan.' },
-        { id: 2, type: 'mcq', question: 'Budi memiliki 15 butir kelereng. Ayah membelikan lagi 12 butir kelereng. Berapa jumlah kelereng Budi seluruhnya sekarang?', options: ['25', '27', '30'], answer: 1, explanation: '15 + 12 = 27 butir kelereng.' },
-        { id: 3, type: 'mcq', question: 'Ibu membawa 24 buah apel. 5 apel ternyata busuk. Berapa sisa buah apel yang bagus?', options: ['19', '20', '29'], answer: 0, explanation: '24 - 5 = 19 buah apel.' },
-        { id: 4, type: 'mcq', question: 'Kelompok A ada 4 apel merah dan 3 apel hijau. Kelompok B ada 5 apel merah dan 2 apel hijau. Bentuk kesamaan matematikanya adalah...', options: ['4 + 3 = 5 + 2', '4 + 5 = 3 + 2', '4 - 3 = 5 - 2'], answer: 0, explanation: 'Jumlah sama-sama 7.' },
-        { id: 5, type: 'mcq', question: 'Berat 1 buku setara dengan 8 butir kelereng. Jumlah kelereng yang dibutuhkan untuk mengimbangi 1 buku adalah...', options: ['6', '8', '10'], answer: 1, explanation: 'Timbangan seimbang jika sama beratnya.' },
-        { id: 6, type: 'fill', question: 'Lengkapi deret bilangan loncat lima berikut: 10, 15, ..., 25, ... (Pisahkan dengan koma)', acceptedAnswers: ['20, 30', '20,30'], displayAnswer: '20, 30', explanation: 'Pola ditambah 5.' },
-        { id: 7, type: 'fill', question: 'Tentukan angka untuk menyeimbangkan ruas: 8 + 4 = 10 + ...', acceptedAnswers: ['2'], displayAnswer: '2', explanation: 'Ruas kiri = 12. Agar ruas kanan 12, maka 10 + 2.' },
-        { id: 8, type: 'essay', question: 'Tino (12 kelereng), Rio (25 kelereng), dan Bima (18 kelereng). Urutkan dari yang paling sedikit!', displayAnswer: 'Tino, Bima, Rio', explanation: 'Urutan: 12 (Tino), 18 (Bima), 25 (Rio).' }
+        { id: 2, type: 'mcq', question: 'Urutkan bilangan di bawah ini dari yang nilainya paling kecil ke yang paling besar: 35, 12, 28, 19', options: ['12, 19, 28, 35', '12, 28, 19, 35', '35, 28, 19, 12'], answer: 0, explanation: 'Urutan dari terkecil: 12, 19, 28, lalu 35.' },
+        { id: 3, type: 'mcq', question: 'Budi memiliki 15 butir kelereng. Ayah membelikan lagi 12 butir kelereng. Berapa jumlah kelereng Budi seluruhnya sekarang?', options: ['25 butir', '27 butir', '30 butir'], answer: 1, explanation: '15 + 12 = 27 butir kelereng.' },
+        { id: 4, type: 'mcq', question: 'Ibu membawa 24 buah apel dari pasar. Sesampainya di rumah, 5 apel ternyata busuk. Berapa sisa buah apel yang bagus?', options: ['19 buah', '20 buah', '29 buah'], answer: 0, explanation: '24 - 5 = 19 buah apel.' },
+        { id: 5, type: 'mcq', question: 'Kelompok A ada 4 apel merah dan 3 apel hijau. Kelompok B ada 5 apel merah dan 2 apel hijau. Bentuk kesamaan matematikanya adalah...', options: ['4 + 3 = 5 + 2', '4 + 5 = 3 + 2', '4 - 3 = 5 - 2'], answer: 0, explanation: 'Kedua kelompok berjumlah sama yaitu 7, persamaannya 4 + 3 = 5 + 2.' },
+        { id: 6, type: 'mcq', question: 'Sisi kiri ada 5 balok merah dan 4 balok biru. Sisi kanan ada 6 balok kuning dan 3 balok hijau. Bentuk kesamaan penjumlahan yang setara adalah...', options: ['5 + 6 = 4 + 3', '5 + 4 = 6 + 3', '5 + 3 = 6 + 4'], answer: 1, explanation: '5 + 4 = 9 dan 6 + 3 = 9. Jadi 5 + 4 = 6 + 3.' },
+        { id: 7, type: 'mcq', question: 'Ada 12 pensil lalu dicoret 4. Di sebelahnya ada 10 pensil lalu dicoret 2. Kalimat matematika kesamaan pengurangannya adalah...', options: ['12 - 4 = 10 - 2', '12 - 2 = 10 - 4', '12 + 4 = 10 + 2'], answer: 0, explanation: '12 - 4 hasilnya 8, dan 10 - 2 hasilnya juga 8.' },
+        { id: 8, type: 'mcq', question: 'Andi memakan 4 dari 15 permennya. Doni memakan 3 dari 14 permennya. Sisa permen mereka sama banyak. Bentuk kesamaannya adalah...', options: ['15 - 4 = 14 - 3', '15 - 3 = 14 - 4', '15 + 4 = 14 + 3'], answer: 0, explanation: '15 - 4 = 11 dan 14 - 3 = 11.' },
+        { id: 9, type: 'mcq', question: 'Berat 1 buku setara dengan 8 butir kelereng. Agar timbangan seimbang, jumlah kelereng untuk 1 buku adalah...', options: ['6 kelereng', '8 kelereng', '10 kelereng'], answer: 1, explanation: 'Timbangan seimbang jika diletakkan 8 kelereng persis.' },
+        { id: 10, type: 'mcq', question: 'Berat Semangka 3 kg, berat Melon 2 kg. Pernyataan yang tepat adalah...', options: ['Semangka lebih ringan dari melon', 'Semangka sama berat dengan melon', 'Semangka lebih berat dari melon'], answer: 2, explanation: '3 kg lebih besar dari 2 kg.' },
+        { id: 11, type: 'fill', question: 'Lengkapi deret bilangan loncat lima berikut: 10, 15, ..., 25, ... (Tulis dipisah koma, contoh: 20, 30)', acceptedAnswers: ['20, 30', '20,30', '20 dan 30'], displayAnswer: '20, 30', explanation: 'Pola ini selalu bertambah 5 (+5).' },
+        { id: 12, type: 'fill', question: 'Rina punya 35 lembar kertas. Dipakai 14 lembar. Sisa kertas Rina sekarang adalah ... lembar.', acceptedAnswers: ['21', '21 lembar'], displayAnswer: '21', explanation: '35 - 14 = 21 lembar.' },
+        { id: 13, type: 'fill', question: 'Tentukan angka yang tepat untuk menyeimbangkan ruas: 8 + 4 = 10 + ...', acceptedAnswers: ['2'], displayAnswer: '2', explanation: 'Ruas kiri nilainya 12. Agar ruas kanan 12, maka 10 harus ditambah 2.' },
+        { id: 14, type: 'fill', question: 'Tentukan angka yang tepat untuk melengkapi: 15 - 5 = 13 - ...', acceptedAnswers: ['3'], displayAnswer: '3', explanation: '15 - 5 = 10. Agar ruas kanan bernilai 10, maka 13 - 3.' },
+        { id: 15, type: 'fill', question: 'Jika 1 mangga seimbang dengan 5 apel, maka 2 mangga seimbang dengan ... apel.', acceptedAnswers: ['10', '10 apel'], displayAnswer: '10', explanation: '1 mangga = 5 apel. 2 mangga = 5 + 5 = 10 apel.' },
+        { id: 16, type: 'essay', question: 'Tino (12 kelereng), Rio (25 kelereng), dan Bima (18 kelereng). Urutkan nama anak dari kelereng paling sedikit!', displayAnswer: 'Tino, Bima, Rio', explanation: 'Urutan dari terkecil: 12 (Tino), 18 (Bima), 25 (Rio).' },
+        { id: 17, type: 'essay', question: 'Paman mengumpulkan 40 telur, pecah 6, lalu ditambah 10 butir lagi dari pasar. Berapa jumlah telur sekarang?', displayAnswer: '40 - 6 + 10 = 44 butir', explanation: 'Langkah: 40 - 6 = 34. Lalu 34 + 10 = 44.' },
+        { id: 18, type: 'essay', question: 'Kelompok A ada 6 bola merah, 3 biru. Kelompok B ada 5 kuning, 4 hijau. Tulis kalimat kesamaan penjumlahannya!', displayAnswer: '6 + 3 = 5 + 4', explanation: 'Kedua sisi berjumlah 9.' },
+        { id: 19, type: 'essay', question: 'Buktikan dengan berhitung bahwa (20 - 8) bernilai sama dengan (15 - 3)!', displayAnswer: '20 - 8 = 12 dan 15 - 3 = 12. Nilainya sama.', explanation: 'Keduanya sama-sama menghasilkan nilai akhir 12.' },
+        { id: 20, type: 'essay', question: 'Mobil (15 kelereng), Robot (20 kelereng), Boneka (12 kelereng). Urutkan dari yang paling ringan!', displayAnswer: 'Boneka, Mobil, Robot', explanation: 'Berat: Boneka(12) < Mobil(15) < Robot(20).' }
       ],
       pkn: [
-        { id: 1, type: 'mcq', question: 'Merapikan bantal dan guling adalah aturan kebersihan yang berlaku di...', options: ['Dapur', 'Kamar Tidur', 'Ruang Tamu'], answer: 1, explanation: 'Kamar tidur adalah tempat kita tidur.' },
-        { id: 2, type: 'mcq', question: 'Tangan yang baik dan benar digunakan saat menyuap makanan adalah...', options: ['Tangan Kanan', 'Tangan Kiri', 'Kedua Tangan'], answer: 0, explanation: 'Makan menggunakan tangan kanan adalah adab yang baik.' },
-        { id: 3, type: 'mcq', question: 'Agar mata tetap sehat, kita harus belajar di tempat yang...', options: ['Gelap', 'Redup', 'Terang'], answer: 2, explanation: 'Cahaya terang menjaga mata dari kerusakan.' },
-        { id: 4, type: 'mcq', question: 'Sebelum keluar rumah untuk bermain, kita wajib meminta izin kepada...', options: ['Teman', 'Orang Tua', 'Tetangga'], answer: 1, explanation: 'Agar orang tua tidak khawatir mencari kita.' },
-        { id: 5, type: 'mcq', question: 'Melihat ayah sedang mencuci sepeda, tindakan kita sebaiknya...', options: ['Melihat saja', 'Ikut bermain air', 'Membantu ayah'], answer: 2, explanation: 'Membantu orang tua adalah kewajiban anak di rumah.' },
-        { id: 6, type: 'fill', question: 'Lengkapilah peribahasa berikut: "Kebersihan pangkal..."', acceptedAnswers: ['kesehatan'], displayAnswer: 'Kesehatan', explanation: 'Lingkungan yang bersih menjauhkan dari penyakit.' },
-        { id: 7, type: 'fill', question: 'Sebelum mulai belajar, hal yang paling pertama harus dilakukan adalah...', acceptedAnswers: ['berdoa'], displayAnswer: 'Berdoa', explanation: 'Berdoa agar diberi kemudahan belajar.' },
-        { id: 8, type: 'essay', question: 'Sebutkan 2 contoh akibat buruk jika tidak mematuhi aturan di rumah!', displayAnswer: '1. Rumah jadi berantakan, 2. Dimarahi orang tua', explanation: 'Aturan dibuat agar hidup tertib.' }
+        { id: 1, type: 'mcq', question: 'Merapikan bantal dan guling setelah bangun adalah aturan yang berlaku di...', options: ['Ruang Tamu', 'Kamar Tidur', 'Dapur'], answer: 1, explanation: 'Tempat untuk tidur dan merapikan kasur adalah di kamar tidur.' },
+        { id: 2, type: 'mcq', question: 'Tangan yang baik dan sopan digunakan saat menyuap makanan adalah...', options: ['Tangan Kanan', 'Tangan Kiri', 'Kedua Tangan'], answer: 0, explanation: 'Makan menggunakan tangan kanan adalah aturan dan adab yang baik.' },
+        { id: 3, type: 'mcq', question: 'Agar mata tetap sehat, kita harus belajar di tempat yang kondisi cahayanya...', options: ['Gelap', 'Redup', 'Terang'], answer: 2, explanation: 'Cahaya yang terang menjaga mata dari kerusakan saat membaca.' },
+        { id: 4, type: 'mcq', question: 'Sikap yang harus kita lakukan saat berbuat kesalahan kepada orang lain adalah...', options: ['Bersembunyi', 'Meminta Maaf', 'Pura-pura tidak tahu'], answer: 1, explanation: 'Meminta maaf adalah bentuk tanggung jawab dan sikap mematuhi aturan.' },
+        { id: 5, type: 'mcq', question: 'Sebelum keluar rumah untuk bermain, kita harus berpamitan atau meminta izin kepada...', options: ['Teman', 'Tetangga', 'Orang Tua'], answer: 2, explanation: 'Kita harus izin kepada orang tua agar mereka tidak khawatir.' },
+        { id: 6, type: 'mcq', question: 'Makanan yang sehat dan bergizi untuk tubuh kita adalah makanan yang mengandung...', options: ['Banyak pengawet', 'Vitamin dan protein', 'Pewarna buatan'], answer: 1, explanation: 'Makanan bergizi harus mengandung vitamin, protein, dan nutrisi baik.' },
+        { id: 7, type: 'mcq', question: 'Jika melihat ayah sedang sibuk mencuci sepeda, tindakan kita sebaiknya...', options: ['Melihat saja', 'Membantu ayah', 'Bermain air'], answer: 1, explanation: 'Tolong-menolong di rumah adalah tindakan yang terpuji.' },
+        { id: 8, type: 'mcq', question: 'Pernyataan di bawah ini yang menunjukkan sikap mematuhi aturan di rumah adalah...', options: ['Tidur larut malam', 'Membuang sampah di lantai', 'Menyapu halaman'], answer: 2, explanation: 'Menyapu halaman adalah bentuk mematuhi aturan kebersihan rumah.' },
+        { id: 9, type: 'mcq', question: 'Jika seluruh ruangan di rumah dijaga kebersihannya, keluarga akan merasa...', options: ['Gelisah', 'Nyaman dan betah', 'Cepat marah'], answer: 1, explanation: 'Rumah yang bersih membuat penghuninya merasa nyaman.' },
+        { id: 10, type: 'mcq', question: 'Sampah yang dibiarkan menumpuk berhari-hari di dalam rumah akan menimbulkan akibat berupa...', options: ['Aroma tidak sedap / bau', 'Udara menjadi segar', 'Rumah menjadi indah'], answer: 0, explanation: 'Sampah yang membusuk akan mengeluarkan bau tidak sedap.' },
+        { id: 11, type: 'fill', question: 'Lengkapilah peribahasa berikut: "Kebersihan pangkal..."', acceptedAnswers: ['kesehatan'], displayAnswer: 'Kesehatan', explanation: 'Menjaga kebersihan akan membuat tubuh kita sehat.' },
+        { id: 12, type: 'fill', question: 'Pihak yang bertanggung jawab menjaga kebersihan di lingkungan rumah adalah...', acceptedAnswers: ['semua anggota keluarga', 'keluarga', 'semua orang di rumah'], displayAnswer: 'Semua anggota keluarga', explanation: 'Kebersihan rumah bukan hanya tugas ibu/ayah, tapi tugas bersama.' },
+        { id: 13, type: 'fill', question: 'Sebelum mulai menyuapkan makanan ke mulut, kita diwajibkan untuk mencuci ... terlebih dahulu.', acceptedAnswers: ['tangan'], displayAnswer: 'Tangan', explanation: 'Cuci tangan sebelum makan mencegah kuman masuk ke perut.' },
+        { id: 14, type: 'fill', question: 'Hal pertama yang sebaiknya dilakukan sebelum mulai belajar adalah...', acceptedAnswers: ['berdoa', 'doa'], displayAnswer: 'Berdoa', explanation: 'Berdoa sebelum belajar agar ilmu mudah dipahami.' },
+        { id: 15, type: 'fill', question: 'Saat bermain bersama teman, sikap utama yang harus ditunjukkan agar tidak bertengkar adalah...', acceptedAnswers: ['rukun', 'jujur', 'baik'], displayAnswer: 'Rukun / Jujur', explanation: 'Kerukunan membuat suasana bermain menyenangkan.' },
+        { id: 16, type: 'fill', question: 'Berbicara dengan nada yang lembut kepada orang tua adalah contoh aturan berkomunikasi di lingkungan...', acceptedAnswers: ['rumah', 'keluarga'], displayAnswer: 'Rumah', explanation: 'Aturan berbicara sopan kepada orang tua diterapkan di rumah.' },
+        { id: 17, type: 'fill', question: 'Orang tua akan merasa sangat senang jika anak-anaknya ... aturan di rumah.', acceptedAnswers: ['mematuhi', 'mentaati', 'menuruti'], displayAnswer: 'Mematuhi / Mentaati', explanation: 'Anak yang patuh membuat orang tua bangga.' },
+        { id: 18, type: 'fill', question: 'Setelah selesai bermain dari luar rumah, anggota tubuh yang harus segera dicuci adalah kaki dan ...', acceptedAnswers: ['tangan'], displayAnswer: 'Tangan', explanation: 'Tangan dan kaki paling banyak menyentuh debu/kotoran di luar.' },
+        { id: 19, type: 'fill', question: 'Jika halaman rumah dipenuhi daun kering yang berguguran, tindakan yang harus dilakukan adalah di...', acceptedAnswers: ['sapu', 'bersihkan'], displayAnswer: 'Sapu / Bersihkan', explanation: 'Halaman disapu agar kembali bersih.' },
+        { id: 20, type: 'fill', question: 'Agar keluarga selalu damai, hubungan antara kakak dan adik di rumah harus selalu dijaga agar tetap...', acceptedAnswers: ['rukun', 'harmonis', 'baik'], displayAnswer: 'Rukun', explanation: 'Kakak adik tidak boleh bertengkar.' },
+        { id: 21, type: 'essay', question: 'Sebutkan 2 (dua) contoh aturan yang berlaku di lingkungan rumahmu!', displayAnswer: '1. Bangun tidur pagi, 2. Merapikan tempat tidur', explanation: 'Bisa juga: membantu orang tua, tidur tidak larut malam, dsb.' },
+        { id: 22, type: 'essay', question: 'Jelaskan bagaimana sikap yang baik saat kamu sedang diberikan nasihat oleh orang tua!', displayAnswer: 'Mendengarkan dengan tenang, tidak memotong pembicaraan, dan mematuhinya.', explanation: 'Mendengarkan nasihat adalah wujud hormat kepada orang tua.' },
+        { id: 23, type: 'essay', question: 'Saat berjalan di halaman, kamu menemukan botol plastik berserakan. Jelaskan tindakanmu!', displayAnswer: 'Mengambil botol plastik tersebut lalu membuangnya ke tempat sampah.', explanation: 'Peduli lingkungan berarti langsung bertindak jika ada sampah.' },
+        { id: 24, type: 'essay', question: 'Sebutkan 2 (dua) akibat buruk jika seseorang tidak mematuhi aturan di rumah!', displayAnswer: '1. Rumah menjadi berantakan, 2. Kena marah orang tua', explanation: 'Melanggar aturan menyebabkan ketidaktertiban.' },
+        { id: 25, type: 'essay', question: 'Sebutkan 2 (dua) manfaat mematuhi aturan di rumah!', displayAnswer: '1. Hidup menjadi disiplin, 2. Suasana rumah jadi nyaman dan damai.', explanation: 'Aturan dibuat untuk kebaikan dan kedisiplinan bersama.' }
       ],
       pjok: [
-        { id: 1, type: 'mcq', question: 'Gerakan yang dilakukan dengan berpindah tempat disebut gerak...', options: ['Lokomotor', 'Non-lokomotor', 'Manipulatif'], answer: 0, explanation: 'Lokomotor artinya berpindah dari satu titik ke titik lain.' },
-        { id: 2, type: 'mcq', question: 'Gerakan mendorong tubuh ke atas dengan tumpuan satu kaki dinamakan...', options: ['Meloncat', 'Melompat', 'Berlari'], answer: 1, explanation: 'Melompat menggunakan satu kaki, sedangkan meloncat menggunakan dua kaki.' },
-        { id: 3, type: 'mcq', question: 'Saat berjalan ke depan, arah pandangan mata yang benar adalah lurus ke...', options: ['Bawah', 'Atas', 'Depan'], answer: 2, explanation: 'Pandangan lurus ke depan agar tidak menabrak.' },
-        { id: 4, type: 'mcq', question: 'Latihan berlari melintasi rintangan kerucut secara berbelok-belok disebut lari...', options: ['Estafet', 'Zig-zag', 'Cepat'], answer: 1, explanation: 'Zig-zag artinya berbelok-belok arah.' },
-        { id: 5, type: 'mcq', question: 'Gerakan meliukkan badan seperti menirukan benda alam yaitu...', options: ['Batu besar', 'Air mengalir', 'Pohon tertiup angin'], answer: 2, explanation: 'Pohon meliuk saat diterpa angin kencang.' },
-        { id: 6, type: 'fill', question: 'Sebelum melakukan olahraga, kita sebaiknya melakukan ... terlebih dahulu.', acceptedAnswers: ['pemanasan'], displayAnswer: 'Pemanasan', explanation: 'Pemanasan mencegah otot cedera.' },
-        { id: 7, type: 'fill', question: 'Menekuk, mengayun, dan memutar merupakan contoh gerak dasar...', acceptedAnswers: ['non-lokomotor', 'non lokomotor'], displayAnswer: 'Non-lokomotor', explanation: 'Karena dilakukan di tempat.' },
-        { id: 8, type: 'essay', question: 'Sebutkan perbedaan melompat dan meloncat berdasarkan tumpuan kakinya!', displayAnswer: 'Melompat menumpu pada 1 kaki. Meloncat menumpu pada 2 kaki.', explanation: 'Itu adalah perbedaan utamanya.' }
+        { id: 1, type: 'mcq', question: 'Gerakan yang dilakukan dengan cara berpindah tempat dari satu titik ke titik lain disebut gerak...', options: ['Lokomotor', 'Non-lokomotor', 'Manipulatif'], answer: 0, explanation: 'Gerak lokomotor adalah gerak berpindah tempat.' },
+        { id: 2, type: 'mcq', question: 'Gerakan mendorong tubuh ke atas dengan tumpuan satu kaki dinamakan gerakan...', options: ['Meloncat', 'Melompat', 'Berlari'], answer: 1, explanation: 'Melompat bertumpu pada satu kaki, meloncat bertumpu pada dua kaki.' },
+        { id: 3, type: 'mcq', question: 'Saat menirukan hewan katak yang bergerak menggunakan kedua kakinya, gerakan tersebut disebut...', options: ['Merayap', 'Meloncat', 'Melompat'], answer: 1, explanation: 'Katak menolak dan mendarat menggunakan dua kaki (meloncat).' },
+        { id: 4, type: 'mcq', question: 'Arah pandangan mata yang benar saat melakukan sikap dasar berjalan ke depan adalah...', options: ['Lurus ke depan', 'Menunduk ke bawah', 'Melihat ke atas'], answer: 0, explanation: 'Pandangan harus ke depan agar tidak tersandung atau menabrak.' },
+        { id: 5, type: 'mcq', question: 'Latihan berlari melintasi rintangan kerucut secara berbelok-belok arah disebut lari...', options: ['Estafet', 'Maraton', 'Zig-zag'], answer: 2, explanation: 'Zig-zag adalah lari berkelok-kelok.' },
+        { id: 6, type: 'mcq', question: 'Gerak yang dilakukan tanpa berpindah tempat dari posisi awalnya disebut gerak...', options: ['Lokomotor', 'Non-lokomotor', 'Dinamis'], answer: 1, explanation: 'Non-lokomotor berarti tidak berpindah.' },
+        { id: 7, type: 'mcq', question: 'Gerakan meliukkan badan dapat dikaitkan dengan fenomena alam seperti menirukan...', options: ['Batu besar yang diam', 'Pohon tertiup angin', 'Air sungai mengalir'], answer: 1, explanation: 'Batang pohon akan meliuk ke kiri dan kanan saat tertiup angin.' },
+        { id: 8, type: 'mcq', question: 'Berikut ini yang merupakan contoh gerak tidak berpindah tempat (non-lokomotor) adalah...', options: ['Berjalan', 'Berlari', 'Mengayun lengan'], answer: 2, explanation: 'Mengayun lengan dilakukan sambil berdiri di tempat.' },
+        { id: 9, type: 'mcq', question: 'Cara yang benar dalam melakukan gerakan membungkukkan badan adalah...', options: ['Ditekuk perlahan ke bawah', 'Disentak dengan kuat', 'Diliukkan ke belakang'], answer: 0, explanation: 'Membungkuk dilakukan perlahan agar otot pinggang tidak cedera.' },
+        { id: 10, type: 'mcq', question: 'Gerakan memutar kedua tangan dari depan ke belakang tubuh merupakan contoh gerakan mengayun...', options: ['Lengan', 'Kaki', 'Kepala'], answer: 0, explanation: 'Tangan/lengan adalah bagian yang diayun memutar.' },
+        { id: 11, type: 'fill', question: 'Kegiatan meregangkan otot yang wajib dilakukan sebelum mulai berolahraga disebut...', acceptedAnswers: ['pemanasan'], displayAnswer: 'Pemanasan', explanation: 'Pemanasan mencegah otot kita kram atau cedera.' },
+        { id: 12, type: 'fill', question: 'Saat mendarat dari gerakan meloncat, tumpuan kaki yang digunakan berjumlah ... kaki.', acceptedAnswers: ['2', 'dua'], displayAnswer: 'Dua', explanation: 'Meloncat bertumpu pada 2 kaki.' },
+        { id: 13, type: 'fill', question: 'Berjalan, berlari, dan melompat sangat bermanfaat untuk menguatkan otot bagian...', acceptedAnswers: ['kaki'], displayAnswer: 'Kaki', explanation: 'Gerakan lokomotor mayoritas mengandalkan kekuatan tungkai kaki.' },
+        { id: 14, type: 'fill', question: 'Saat melakukan lari cepat (sprint), pandangan mata harus fokus ke arah...', acceptedAnswers: ['depan'], displayAnswer: 'Depan', explanation: 'Fokus ke depan untuk melihat lintasan.' },
+        { id: 15, type: 'fill', question: 'Hewan kangguru berpindah tempat menggunakan kedua kakinya dengan cara...', acceptedAnswers: ['meloncat'], displayAnswer: 'Meloncat', explanation: 'Kangguru menolak dengan dua kaki (meloncat).' },
+        { id: 16, type: 'fill', question: 'Gerak dasar yang dilakukan hanya dengan menggerakkan tubuh tapi kaki tetap berpijak di tempat disebut gerak...', acceptedAnswers: ['non-lokomotor', 'non lokomotor'], displayAnswer: 'Non-lokomotor', explanation: 'Artinya diam di tempat.' },
+        { id: 17, type: 'fill', question: 'Bagian tubuh yang paling banyak digerakkan saat menirukan pohon tertiup angin adalah...', acceptedAnswers: ['badan', 'pinggang'], displayAnswer: 'Badan / Pinggang', explanation: 'Badan diliukkan ke kiri dan kanan.' },
+        { id: 18, type: 'fill', question: 'Posisi tubuh yang benar sebagai sikap awal sebelum memutar lengan adalah berdiri...', acceptedAnswers: ['tegak'], displayAnswer: 'Tegak', explanation: 'Berdiri tegak adalah posisi dasar siap tubuh.' },
+        { id: 19, type: 'fill', question: 'Menekuk, mengayun, dan memutar diklasifikasikan ke dalam kelompok gerak dasar...', acceptedAnswers: ['non-lokomotor', 'non lokomotor'], displayAnswer: 'Non-lokomotor', explanation: 'Karena tidak membuat tubuh berpindah lokasi.' },
+        { id: 20, type: 'fill', question: 'Selain lengan, anggota tubuh bagian bawah yang bisa diayunkan saat pemanasan adalah...', acceptedAnswers: ['kaki'], displayAnswer: 'Kaki', explanation: 'Kaki bisa diayun ke depan dan ke belakang.' },
+        { id: 21, type: 'essay', question: 'Jelaskan pengertian gerak lokomotor secara lengkap!', displayAnswer: 'Gerak lokomotor adalah gerakan tubuh yang menyebabkan kita berpindah dari satu tempat ke tempat lain.', explanation: 'Kata kuncinya: berpindah tempat.' },
+        { id: 22, type: 'essay', question: 'Sebutkan 3 (tiga) contoh gerak lokomotor yang biasa dilakukan dalam olahraga!', displayAnswer: 'Berjalan, berlari, melompat (atau meloncat, merayap).', explanation: 'Ketiga gerakan ini memindahkan tubuh.' },
+        { id: 23, type: 'essay', question: 'Jelaskan perbedaan utama antara gerakan melompat dan meloncat!', displayAnswer: 'Melompat bertumpu dan menolak dengan 1 kaki, sedangkan meloncat menolak dengan 2 kaki.', explanation: 'Perbedaan ada pada jumlah tumpuan kakinya saat menolak tanah.' },
+        { id: 24, type: 'essay', question: 'Jelaskan pengertian gerak non-lokomotor secara lengkap!', displayAnswer: 'Gerak non-lokomotor adalah gerak anggota tubuh yang dilakukan tanpa harus berpindah tempat (diam di tempat).', explanation: 'Kata kuncinya: tidak berpindah tempat.' },
+        { id: 25, type: 'essay', question: 'Sebutkan 3 (tiga) contoh gerak non-lokomotor pada tubuh bagian atas!', displayAnswer: 'Mengayun lengan, memutar kepala, membungkukkan badan.', explanation: 'Fokus pada gerakan setengah badan ke atas.' }
       ],
       pabp: [
-        { id: 1, type: 'mcq', question: 'Saat merasa takut atau mendapat bisikan buruk, kita dianjurkan membaca Surah...', options: ['Al-Fatihah', 'An-Nas', 'Al-Ikhlas'], answer: 1, explanation: 'An-Nas berarti manusia, memohon perlindungan.' },
-        { id: 2, type: 'mcq', question: 'Lanjutan dari ayat "Malikin-nās..." adalah...', options: ['Ilāhin-nās', 'Min syarril-waswāsil-khannās', 'Minal jinnati wan-nās'], answer: 0, explanation: 'Ayat ke-3 surat An-Nas adalah Ilāhin-nās.' },
-        { id: 3, type: 'mcq', question: 'Allah memberikan rezeki makanan bagi semua makhluk. Hal ini sesuai dengan Asmaul Husna Ar-Rahman yang artinya...', options: ['Maha Penyayang', 'Maha Pengasih', 'Maha Sejahtera'], answer: 1, explanation: 'Ar-Rahman artinya Maha Pengasih (kasih untuk semua makhluk).' },
-        { id: 4, type: 'mcq', question: 'Sikap saling memaafkan antar teman adalah keteladanan sifat...', options: ['Ar-Rahman', 'Ar-Rahim', 'Al-Mukmin'], answer: 1, explanation: 'Ar-Rahim berarti Penyayang, mengasihi sesama saudara/teman.' },
-        { id: 5, type: 'mcq', question: 'Arti dari Asmaul Husna Al-Mukmin adalah...', options: ['Maha Penyelamat', 'Maha Suci', 'Maha Memberi Keamanan'], answer: 2, explanation: 'Al-Mukmin memberikan rasa aman di hati manusia.' },
-        { id: 6, type: 'fill', question: 'Dalam surat An-Nas, kita memohon perlindungan hanya kepada...', acceptedAnswers: ['allah', 'allah swt'], displayAnswer: 'Allah Swt', explanation: 'Tidak ada pelindung selain Allah.' },
-        { id: 7, type: 'fill', question: 'Mengucapkan salam kepada teman adalah cara menyebarkan rasa...', acceptedAnswers: ['damai', 'keselamatan', 'aman'], displayAnswer: 'Kedamaian / Keselamatan', explanation: 'Sesuai dengan keteladanan As-Salam.' },
-        { id: 8, type: 'essay', question: 'Tuliskan alasan mengapa membaca surat An-Nas dapat membuat hati menjadi tenang!', displayAnswer: 'Karena dengan membacanya, kita dijaga dan dilindungi oleh Allah dari segala keburukan.', explanation: 'Allah adalah sebaik-baik pelindung.' }
+        { id: 1, type: 'mcq', question: 'Saat merasa takut atau mendapat bisikan buruk di hati, kita dianjurkan memohon perlindungan dengan membaca Surah...', options: ['Al-Fatihah', 'An-Nas', 'Al-Ikhlas'], answer: 1, explanation: 'Q.S An-Nas berisi doa memohon perlindungan kepada Tuhan manusia.' },
+        { id: 2, type: 'mcq', question: 'Lanjutan dari ayat "Malikin-nās..." adalah...', options: ['Ilāhin-nās', 'Min syarril-waswāsil-khannās', 'Minal jinnati wan-nās'], answer: 0, explanation: 'Urutan ayat Q.S An-Nas: Qul a\'uzu, Malikin-nās, Ilāhin-nās.' },
+        { id: 3, type: 'mcq', question: 'Manusia perlu memohon perlindungan hanya kepada Allah Swt. karena...', options: ['Allah Maha Kaya', 'Allah adalah sebaik-baik pelindung', 'Manusia sangat kuat'], answer: 1, explanation: 'Hanya Allah Swt. pelindung mutlak dari segala godaan kejahatan.' },
+        { id: 4, type: 'mcq', question: 'Jika huruf ( ب ) bertemu dengan huruf ( ت ) di akhir, penulisannya bersambung menjadi...', options: ['ب ت', 'بت', 'ت ب'], answer: 1, explanation: 'Huruf Ba bisa disambung dengan huruf Ta (بت).' },
+        { id: 5, type: 'mcq', question: 'Huruf yang TIDAK BISA disambung dengan huruf setelahnya adalah...', options: ['Dal (د)', 'Sin (س)', 'Nun (ن)'], answer: 0, explanation: 'Huruf Dal (د), Zal, Ra, Zai, Wawu, Alif tidak bisa disambung ke kiri.' },
+        { id: 6, type: 'mcq', question: 'Allah memberikan rezeki makanan kepada seluruh makhluk di bumi. Ini membuktikan bahwa Allah bersifat Ar-Rahman yang berarti...', options: ['Maha Penyayang', 'Maha Pengasih', 'Maha Sejahtera'], answer: 1, explanation: 'Ar-Rahman berarti Maha Pengasih (kepada seluruh makhluk di dunia).' },
+        { id: 7, type: 'mcq', question: 'Perilaku yang menunjukkan sikap meneladani Asmaul Husna Ar-Rahman adalah...', options: ['Membantu teman yang jatuh', 'Berbuat curang', 'Mengejek orang miskin'], answer: 0, explanation: 'Membantu mencerminkan sifat kasih/sayang kepada sesama.' },
+        { id: 8, type: 'mcq', question: 'Sikap saling memaafkan dan menyayangi saudara seagama adalah keteladanan Asmaul Husna...', options: ['Ar-Rahman', 'Ar-Rahim', 'Al-Mukmin'], answer: 1, explanation: 'Ar-Rahim berarti Maha Penyayang (khususnya rahmat di akhirat/untuk orang beriman).' },
+        { id: 9, type: 'mcq', question: 'As-Salam berarti Allah Maha Memberi Keselamatan. Contoh perilakunya di sekolah adalah...', options: ['Mencari musuh', 'Menyebarkan salam dan rukun', 'Berkelahi di kelas'], answer: 1, explanation: 'Menyebar salam menciptakan kedamaian dan keselamatan antarteman.' },
+        { id: 10, type: 'mcq', question: 'Asmaul Husna Al-Mukmin memiliki arti Allah Maha...', options: ['Pencipta', 'Mendengar', 'Memberi Rasa Aman'], answer: 2, explanation: 'Al-Mukmin memberikan keamanan dan ketenangan di hati manusia.' },
+        { id: 11, type: 'fill', question: 'Tujuan utama membaca Surah An-Nas adalah untuk berlindung dari bisikan jahat setan yang bersembunyi di dalam ... manusia.', acceptedAnswers: ['hati', 'dada'], displayAnswer: 'Hati / Dada', explanation: 'Allazi yuwaswisu fi sudurin-nas (ke dalam dada manusia).' },
+        { id: 12, type: 'fill', question: 'Dalam surat An-Nas, pihak satu-satunya tempat memohon perlindungan adalah...', acceptedAnswers: ['allah', 'allah swt', 'tuhan'], displayAnswer: 'Allah Swt', explanation: 'Hanya Allah pelindung dari kejahatan jin dan manusia.' },
+        { id: 13, type: 'fill', question: 'Lengkapi ujung ayat ke-5 surat Al-Falaq berikut: "Wa min syarri hāsidin izā ...."', acceptedAnswers: ['hasad'], displayAnswer: 'Hasad', explanation: 'Artinya: dan dari kejahatan orang dengki apabila ia dengki.' },
+        { id: 14, type: 'fill', question: 'Huruf wawu (و) jika berada di tengah kata tidak disambung dengan huruf di depannya/setelahnya karena wawu termasuk huruf...', acceptedAnswers: ['yang tidak bisa disambung', 'terpisah'], displayAnswer: 'Yang tidak bisa disambung ke kiri', explanation: 'Aturan tajwid penulisan (wawu, dal, zal, ra, zai, alif).' },
+        { id: 15, type: 'fill', question: 'Gabungkan huruf tunggal berikut: ( س - ل - م ). Jika disambung menjadi...', acceptedAnswers: ['سلم'], displayAnswer: 'سلم (salama)', explanation: 'Sin disambung Lam disambung Mim.' },
+        { id: 16, type: 'fill', question: 'Karunia Allah berupa kebutuhan pokok manusia (air, udara, makanan) sesuai dengan sifat Allah...', acceptedAnswers: ['ar-rahman', 'ar rahman'], displayAnswer: 'Ar-Rahman', explanation: 'Maha Pengasih atas segala kebutuhan hamba-Nya di bumi.' },
+        { id: 17, type: 'fill', question: 'Kasih sayang Allah kepada orang-orang beriman di akhirat ditunjukkan melalui sifat...', acceptedAnswers: ['ar-rahim', 'ar rahim'], displayAnswer: 'Ar-Rahim', explanation: 'Maha Penyayang bagi orang-orang mukmin.' },
+        { id: 18, type: 'fill', question: 'Ketika ada teman meminta maaf secara tulus, sikap kita sesuai teladan Ar-Rahim adalah segera...', acceptedAnswers: ['memaafkan', 'memaafkannya'], displayAnswer: 'Memaafkan', explanation: 'Memberi maaf adalah bentuk kasih sayang sesama.' },
+        { id: 19, type: 'fill', question: 'Mengucapkan "Assalamu’alaikum" berarti kita mendoakan ... untuk teman kita.', acceptedAnswers: ['keselamatan', 'kedamaian'], displayAnswer: 'Keselamatan / Kedamaian', explanation: 'Sejalan dengan Asmaul Husna As-Salam.' },
+        { id: 20, type: 'fill', question: 'Menenangkan teman yang sedang ketakutan adalah bentuk meneladani sifat Allah yaitu...', acceptedAnswers: ['al-mukmin', 'al mukmin'], displayAnswer: 'Al-Mukmin', explanation: 'Al-Mukmin berarti memberi rasa aman kepada orang lain.' },
+        { id: 21, type: 'essay', question: 'Mengapa membaca Surah An-Nas sebelum tidur dapat membuat hati menjadi tenang?', displayAnswer: 'Karena dengan membaca Surah An-Nas, kita meminta penjagaan dan perlindungan langsung kepada Allah dari gangguan setan saat tidur.', explanation: 'Doa perlindungan memberi rasa tentram.' },
+        { id: 22, type: 'essay', question: 'Tuliskan 6 (enam) huruf hijaiyah yang TIDAK DAPAT disambung dengan huruf setelahnya (ke arah kiri)!', displayAnswer: 'Alif (ا), Dal (د), Zal (ذ), Ra (ر), Zai (ز), Wawu (و).', explanation: 'Ini adalah kaidah dasar penulisan huruf Arab/Hijaiyah bersambung.' },
+        { id: 23, type: 'essay', question: 'Sebutkan 1 contoh nyata perilaku meneladani Asmaul Husna Ar-Rahman di rumah!', displayAnswer: 'Berbagi makanan dengan saudara tanpa pilih kasih, atau menyayangi dan merawat hewan peliharaan di rumah.', explanation: 'Ar-Rahman = Pengasih kepada semua makhluk.' },
+        { id: 24, type: 'essay', question: 'Berdasarkan teladan sifat As-Salam, mengapa kita tidak boleh suka bertengkar dengan teman?', displayAnswer: 'Karena bertengkar merusak kedamaian. Kita harus menyebar keselamatan dan kerukunan seperti sifat As-Salam.', explanation: 'Tujuan As-Salam adalah kesejahteraan dan anti-permusuhan.' },
+        { id: 25, type: 'essay', question: 'Apa tindakan yang akan kamu lakukan di kelas agar suasana belajar aman dan tenang sesuai teladan Al-Mukmin?', displayAnswer: 'Tidak mengganggu teman yang sedang belajar dan tidak membuat kegaduhan di kelas.', explanation: 'Al-Mukmin menumbuhkan rasa aman bagi lingkungan sekitarnya.' }
       ]
     };
 
-    // State
+    // --- APPLICATION STATE & LOGIC ---
     let currentSubject = '';
     let currentQuiz = [];
     let currentIndex = 0;
     let userAnswers = {};
     let studentName = '';
 
-    // DOM Elements
     const sHome = document.getElementById('screen-home');
     const sStart = document.getElementById('screen-start');
     const sQuiz = document.getElementById('screen-quiz');
@@ -261,24 +323,20 @@
     function renderQuestion() {
       const q = currentQuiz[currentIndex];
       
-      // Progress
       document.getElementById('progress-fill').style.width = `${((currentIndex + 1) / currentQuiz.length) * 100}%`;
-      document.getElementById('label-progress').textContent = `Soal ${currentIndex + 1} / ${currentQuiz.length}`;
+      document.getElementById('label-progress').textContent = `Soal ${currentIndex + 1} dari ${currentQuiz.length}`;
       document.getElementById('question-number-badge').textContent = currentIndex + 1;
       document.getElementById('question-text').innerHTML = q.question;
       
-      // Type Badge
       const badge = document.getElementById('badge-question-type');
       if (q.type === 'mcq') { badge.textContent = 'Pilihan Ganda'; badge.className = 'px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-xs font-bold'; }
       else if (q.type === 'fill') { badge.textContent = 'Isian Singkat'; badge.className = 'px-2 py-1 bg-amber-100 text-amber-800 rounded text-xs font-bold'; }
       else { badge.textContent = 'Uraian'; badge.className = 'px-2 py-1 bg-rose-100 text-rose-800 rounded text-xs font-bold'; }
 
-      // Illustration
       const illusBox = document.getElementById('question-illustration');
       if (q.illustration) { illusBox.innerHTML = q.illustration; illusBox.classList.remove('hidden'); }
       else { illusBox.classList.add('hidden'); }
 
-      // Options
       const ansCont = document.getElementById('answer-container');
       ansCont.innerHTML = '';
       
@@ -296,19 +354,17 @@
       } else if (q.type === 'fill') {
         ansCont.innerHTML = `<input type="text" id="inp-fill" onchange="saveInput(${q.id})" value="${userAnswers[q.id] || ''}" placeholder="Tulis jawaban singkatmu..." class="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 font-bold" />`;
       } else {
-        ansCont.innerHTML = `<textarea id="inp-essay" onchange="saveArea(${q.id})" placeholder="Tulis penjelasanmu..." rows="3" class="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 font-semibold text-sm">${userAnswers[q.id] || ''}</textarea>`;
+        ansCont.innerHTML = `<textarea id="inp-essay" onchange="saveArea(${q.id})" placeholder="Tulis penjelasanmu di sini..." rows="3" class="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 font-semibold text-sm">${userAnswers[q.id] || ''}</textarea>`;
       }
 
       document.getElementById('btn-prev').disabled = currentIndex === 0;
       const btnNext = document.getElementById('btn-next');
       if (currentIndex === currentQuiz.length - 1) {
-        btnNext.innerHTML = `Selesai <i data-lucide="check" class="w-4 h-4"></i>`;
-        btnNext.classList.replace('bg-indigo-500', 'bg-emerald-600');
-        btnNext.classList.replace('hover:bg-indigo-600', 'hover:bg-emerald-700');
+        btnNext.innerHTML = `<span>Selesai</span> <i data-lucide="check" class="w-4 h-4"></i>`;
+        btnNext.className = "btn-bounce bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 text-sm";
       } else {
-        btnNext.innerHTML = `Lanjut <i data-lucide="chevron-right" class="w-4 h-4"></i>`;
-        btnNext.classList.replace('bg-emerald-600', 'bg-indigo-500');
-        btnNext.classList.replace('hover:bg-emerald-700', 'hover:bg-indigo-600');
+        btnNext.innerHTML = `<span>Lanjut</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>`;
+        btnNext.className = "btn-bounce bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 text-sm";
       }
       lucide.createIcons();
     }
@@ -340,6 +396,7 @@
           if(q.acceptedAnswers.includes(ans)) correct++;
         }
       });
+      
       const score = Math.round((correct / totalAuto) * 100);
       document.getElementById('display-name').textContent = studentName;
       document.getElementById('final-score').textContent = score;
@@ -360,17 +417,23 @@
           isCorrect = q.acceptedAnswers.includes((userDisp||'').toLowerCase());
         }
         
-        let badge = q.type === 'essay' ? '<span class="px-2 py-1 bg-amber-100 text-amber-800 rounded text-xs font-bold">Uraian</span>' :
-                    isCorrect ? '<span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded text-xs font-bold">Benar</span>' :
-                                '<span class="px-2 py-1 bg-rose-100 text-rose-800 rounded text-xs font-bold">Salah</span>';
+        let badge = q.type === 'essay' ? '<span class="px-2 py-1 bg-amber-100 text-amber-800 rounded text-xs font-bold">Soal Uraian</span>' :
+                    isCorrect ? '<span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded text-xs font-bold">Jawaban Benar</span>' :
+                                '<span class="px-2 py-1 bg-rose-100 text-rose-800 rounded text-xs font-bold">Jawaban Salah</span>';
 
         list.innerHTML += `
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm">
-            <div class="flex justify-between mb-2"><strong class="text-slate-500">Soal ${i+1}</strong> ${badge}</div>
-            <p class="font-bold mb-3">${q.question}</p>
+            <div class="flex items-center justify-between mb-2">
+              <strong class="text-slate-500">Soal No. ${i+1}</strong> 
+              ${badge}
+            </div>
+            <p class="font-bold mb-3 text-slate-800">${q.question}</p>
             <p class="text-slate-600 text-xs">Jawaban Kamu: <strong>${userDisp||'-'}</strong></p>
-            <p class="text-emerald-700 text-xs mt-1">Kunci: <strong>${q.type === 'mcq' ? q.options[q.answer] : q.displayAnswer}</strong></p>
-            <p class="text-indigo-700 text-xs mt-2 p-2 bg-indigo-50 rounded">💡 ${q.explanation}</p>
+            <p class="text-emerald-700 text-xs mt-1">Kunci Jawaban: <strong>${q.type === 'mcq' ? q.options[q.answer] : q.displayAnswer}</strong></p>
+            <div class="mt-3 p-3 bg-indigo-50 border border-indigo-100 rounded-lg">
+              <span class="text-indigo-800 font-bold block mb-1 text-xs">💡 Pembahasan:</span>
+              <p class="text-indigo-700 text-xs leading-relaxed">${q.explanation}</p>
+            </div>
           </div>
         `;
       });
@@ -378,9 +441,17 @@
       sReview.classList.remove('hidden');
     }
 
-    function backToResult() { sReview.classList.add('hidden'); sResult.classList.remove('hidden'); }
+    function backToResult() { 
+      sReview.classList.add('hidden'); 
+      sResult.classList.remove('hidden'); 
+    }
+    
     function goToHome() {
-      sStart.classList.add('hidden'); sQuiz.classList.add('hidden'); sResult.classList.add('hidden'); sReview.classList.add('hidden');
+      sStart.classList.add('hidden'); 
+      sQuiz.classList.add('hidden'); 
+      sResult.classList.add('hidden'); 
+      sReview.classList.add('hidden');
+      
       sHome.classList.remove('hidden');
       badgeActive.classList.add('hidden');
       badgeActive.classList.remove('flex');
