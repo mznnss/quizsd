@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Kuis Pintar Kelas 2 SD</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+    h1, h2, h3, .font-heading { font-family: 'Fredoka', cursive, sans-serif; }
+    .btn-bounce { transition: all 0.15s ease-in-out; }
+    .btn-bounce:hover { transform: translateY(-2px); }
+    .btn-bounce:active { transform: translateY(2px); }
+  </style>
+</head>
+<body class="bg-indigo-50 min-h-screen text-slate-800 antialiased flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white border-b-4 border-indigo-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3" id="header-brand" style="cursor: pointer;">
+        <span class="text-3xl p-2 bg-indigo-100 rounded-2xl flex items-center justify-center border-2 border-indigo-300">🏫</span>
+        <div>
+          <h1 class="text-lg md:text-xl font-bold text-indigo-700 leading-tight font-heading">Portal Kuis Pintar</h1>
+          <p class="text-xs text-slate-500 font-semibold">Kelas 2 SD • Sumatif Lingkup Materi</p>
+        </div>
+      </div>
+      <div id="active-subject-badge" class="hidden items-center gap-2 bg-amber-100 px-3 py-1.5 rounded-full border border-amber-300 text-xs font-bold text-amber-800">
+        <span id="badge-subject-name">Matematika</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-3xl mx-auto w-full px-4 py-6 flex-1 flex flex-col justify-center">
+
+    <!-- Screen 0: Subject Selection -->
+    <div id="screen-home" class="space-y-6">
+      <div class="text-center space-y-2 mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Pilih Mata Pelajaran</h2>
+        <p class="text-slate-600 text-sm">Ayo, pilih pelajaran yang ingin kamu kerjakan hari ini!</p>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Card Matematika -->
+        <button onclick="selectSubject('matematika')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-amber-200 shadow-lg text-left flex items-center gap-4 hover:border-amber-400">
+          <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl">🧮</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-800 font-heading">Matematika</h3>
+            <p class="text-xs font-semibold text-slate-500 mt-1">20 Soal • Hitung & Logika</p>
+          </div>
+        </button>
+        <!-- Card PKN -->
+        <button onclick="selectSubject('pkn')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-rose-200 shadow-lg text-left flex items-center gap-4 hover:border-rose-400">
+          <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center text-3xl">🤝</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-800 font-heading">Pendidikan Pancasila</h3>
+            <p class="text-xs font-semibold text-slate-500 mt-1">25 Soal • Aturan & Sikap</p>
+          </div>
+        </button>
+        <!-- Card PJOK -->
+        <button onclick="selectSubject('pjok')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-emerald-200 shadow-lg text-left flex items-center gap-4 hover:border-emerald-400">
+          <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl">🏃</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-800 font-heading">PJOK</h3>
+            <p class="text-xs font-semibold text-slate-500 mt-1">25 Soal • Gerak Jasmani</p>
+          </div>
+        </button>
+        <!-- Card PABP -->
+        <button onclick="selectSubject('pabp')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-sky-200 shadow-lg text-left flex items-center gap-4 hover:border-sky-400">
+          <div class="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center text-3xl">🕌</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-800 font-heading">PABP</h3>
+            <p class="text-xs font-semibold text-slate-500 mt-1">25 Soal • Agama & Budi Pekerti</p>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Screen 1: Start Screen -->
+    <div id="screen-start" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6">
+      <div class="inline-block p-4 bg-indigo-100 rounded-full text-5xl mb-2 animate-bounce" id="start-icon">🦁</div>
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading" id="start-title">Siap Mengerjakan Kuis?</h2>
+        <p class="text-slate-600 text-sm md:text-base mt-2" id="start-desc">Tulis namamu dulu ya sebelum mulai!</p>
+      </div>
+      <div class="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200 max-w-sm mx-auto text-left space-y-3">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Nama Siswa Hebat:</label>
+        <input id="student-name" type="text" placeholder="Tulis namamu di sini..." class="w-full px-4 py-3 rounded-xl border-2 border-indigo-300 focus:outline-none focus:border-indigo-500 bg-white font-semibold text-slate-700 placeholder:text-slate-400" />
+      </div>
+      <div>
+        <button onclick="startQuiz()" class="btn-bounce bg-indigo-500 hover:bg-indigo-600 text-white font-heading font-bold text-lg md:text-xl px-10 py-4 rounded-2xl shadow-lg flex items-center gap-2 mx-auto">
+          <span>Mulai Kuis Sekarang!</span>
+          <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+        </button>
+      </div>
+      <button onclick="goToHome()" class="text-sm font-bold text-slate-400 hover:text-slate-600 underline">Kembali pilih pelajaran</button>
+    </div>
+
+    <!-- Screen 2: Quiz -->
+    <div id="screen-quiz" class="hidden space-y-4">
+      <div class="bg-white px-4 py-3 rounded-2xl border-2 border-indigo-100 shadow-sm flex flex-col gap-2">
+        <div class="flex items-center justify-between text-xs font-bold text-slate-600">
+          <span id="badge-question-type" class="px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded-lg">Pilihan Ganda</span>
+          <span id="label-progress">Soal 1</span>
+        </div>
+        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+          <div id="progress-fill" class="bg-indigo-500 h-full rounded-full transition-all duration-300 w-0"></div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-6 md:p-8 border-4 border-indigo-200 shadow-xl space-y-6 relative overflow-hidden">
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <span id="question-number-badge" class="font-heading bg-indigo-500 text-white font-bold text-lg w-10 h-10 rounded-2xl flex items-center justify-center shrink-0">1</span>
+            <div id="question-text" class="text-base md:text-lg font-bold text-slate-800 leading-snug pt-1">Pertanyaan...</div>
+          </div>
+          <div id="question-illustration" class="hidden bg-slate-50 p-4 rounded-2xl border-2 border-dashed border-slate-200 text-center text-lg font-bold text-indigo-700"></div>
+        </div>
+        <div id="answer-container" class="space-y-3 pt-2"></div>
+        <div class="flex items-center justify-between pt-6 border-t border-slate-100">
+          <button onclick="prevQuestion()" id="btn-prev" class="px-5 py-2.5 rounded-xl border-2 border-slate-200 text-slate-600 font-bold hover:bg-slate-100 disabled:opacity-40 flex items-center gap-1.5 text-sm">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i> Sebelumnya
+          </button>
+          <button onclick="nextQuestion()" id="btn-next" class="btn-bounce bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 text-sm">
+            <span>Lanjut</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screen 3: Result -->
+    <div id="screen-result" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6">
+      <div id="result-badge" class="inline-block p-4 bg-emerald-100 rounded-full text-5xl">🎉</div>
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Selesai, <span id="display-name" class="text-indigo-600">Siswa</span>!</h2>
+        <p class="text-slate-500 text-sm mt-1">Skor ini adalah gabungan nilai Pilihan Ganda & Isian Singkat.</p>
+      </div>
+      <div class="bg-indigo-50 p-6 rounded-3xl border-2 border-indigo-200 max-w-sm mx-auto">
+        <p class="text-xs uppercase font-bold text-indigo-800 tracking-wider mb-1">Skor Otomatis</p>
+        <div class="text-5xl font-black text-indigo-600 font-heading my-1">
+          <span id="final-score">0</span><span class="text-2xl text-slate-400 font-semibold">/100</span>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+        <button onclick="showReview()" class="btn-bounce px-6 py-3 rounded-2xl border-2 border-indigo-400 font-bold text-indigo-700 hover:bg-indigo-50 flex items-center justify-center gap-2 text-sm">
+          <i data-lucide="file-text" class="w-4 h-4"></i> Kunci & Pembahasan
+        </button>
+        <button onclick="goToHome()" class="btn-bounce bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-2xl shadow-md flex items-center justify-center gap-2 text-sm">
+          <i data-lucide="home" class="w-4 h-4"></i> Kembali ke Menu
+        </button>
+      </div>
+    </div>
+
+    <!-- Screen 4: Review -->
+    <div id="screen-review" class="hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl md:text-2xl font-bold text-slate-800 font-heading">Pembahasan Jawaban</h2>
+        <button onclick="backToResult()" class="text-xs font-bold text-indigo-700 hover:underline flex items-center gap-1">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali ke Skor
+        </button>
+      </div>
+      <div id="review-list" class="space-y-4"></div>
+    </div>
+
+  </main>
+
+  <script>
+    // --- DATABASE SOAL TERPADU ---
+    const allQuizData = {
+      matematika: [
+        { id: 1, type: 'mcq', question: 'Perhatikan bilangan dua angka berikut! Angka 4 pada bilangan tersebut menempati nilai tempat...', illustration: '[ 48 ]', options: ['Ratusan', 'Puluhan', 'Satuan'], answer: 1, explanation: 'Angka 4 bernilai 40 (Puluhan), dan angka 8 bernilai Satuan.' },
+        { id: 2, type: 'mcq', question: 'Budi memiliki 15 butir kelereng. Ayah membelikan lagi 12 butir kelereng. Berapa jumlah kelereng Budi seluruhnya sekarang?', options: ['25', '27', '30'], answer: 1, explanation: '15 + 12 = 27 butir kelereng.' },
+        { id: 3, type: 'mcq', question: 'Ibu membawa 24 buah apel. 5 apel ternyata busuk. Berapa sisa buah apel yang bagus?', options: ['19', '20', '29'], answer: 0, explanation: '24 - 5 = 19 buah apel.' },
+        { id: 4, type: 'mcq', question: 'Kelompok A ada 4 apel merah dan 3 apel hijau. Kelompok B ada 5 apel merah dan 2 apel hijau. Bentuk kesamaan matematikanya adalah...', options: ['4 + 3 = 5 + 2', '4 + 5 = 3 + 2', '4 - 3 = 5 - 2'], answer: 0, explanation: 'Jumlah sama-sama 7.' },
+        { id: 5, type: 'mcq', question: 'Berat 1 buku setara dengan 8 butir kelereng. Jumlah kelereng yang dibutuhkan untuk mengimbangi 1 buku adalah...', options: ['6', '8', '10'], answer: 1, explanation: 'Timbangan seimbang jika sama beratnya.' },
+        { id: 6, type: 'fill', question: 'Lengkapi deret bilangan loncat lima berikut: 10, 15, ..., 25, ... (Pisahkan dengan koma)', acceptedAnswers: ['20, 30', '20,30'], displayAnswer: '20, 30', explanation: 'Pola ditambah 5.' },
+        { id: 7, type: 'fill', question: 'Tentukan angka untuk menyeimbangkan ruas: 8 + 4 = 10 + ...', acceptedAnswers: ['2'], displayAnswer: '2', explanation: 'Ruas kiri = 12. Agar ruas kanan 12, maka 10 + 2.' },
+        { id: 8, type: 'essay', question: 'Tino (12 kelereng), Rio (25 kelereng), dan Bima (18 kelereng). Urutkan dari yang paling sedikit!', displayAnswer: 'Tino, Bima, Rio', explanation: 'Urutan: 12 (Tino), 18 (Bima), 25 (Rio).' }
+      ],
+      pkn: [
+        { id: 1, type: 'mcq', question: 'Merapikan bantal dan guling adalah aturan kebersihan yang berlaku di...', options: ['Dapur', 'Kamar Tidur', 'Ruang Tamu'], answer: 1, explanation: 'Kamar tidur adalah tempat kita tidur.' },
+        { id: 2, type: 'mcq', question: 'Tangan yang baik dan benar digunakan saat menyuap makanan adalah...', options: ['Tangan Kanan', 'Tangan Kiri', 'Kedua Tangan'], answer: 0, explanation: 'Makan menggunakan tangan kanan adalah adab yang baik.' },
+        { id: 3, type: 'mcq', question: 'Agar mata tetap sehat, kita harus belajar di tempat yang...', options: ['Gelap', 'Redup', 'Terang'], answer: 2, explanation: 'Cahaya terang menjaga mata dari kerusakan.' },
+        { id: 4, type: 'mcq', question: 'Sebelum keluar rumah untuk bermain, kita wajib meminta izin kepada...', options: ['Teman', 'Orang Tua', 'Tetangga'], answer: 1, explanation: 'Agar orang tua tidak khawatir mencari kita.' },
+        { id: 5, type: 'mcq', question: 'Melihat ayah sedang mencuci sepeda, tindakan kita sebaiknya...', options: ['Melihat saja', 'Ikut bermain air', 'Membantu ayah'], answer: 2, explanation: 'Membantu orang tua adalah kewajiban anak di rumah.' },
+        { id: 6, type: 'fill', question: 'Lengkapilah peribahasa berikut: "Kebersihan pangkal..."', acceptedAnswers: ['kesehatan'], displayAnswer: 'Kesehatan', explanation: 'Lingkungan yang bersih menjauhkan dari penyakit.' },
+        { id: 7, type: 'fill', question: 'Sebelum mulai belajar, hal yang paling pertama harus dilakukan adalah...', acceptedAnswers: ['berdoa'], displayAnswer: 'Berdoa', explanation: 'Berdoa agar diberi kemudahan belajar.' },
+        { id: 8, type: 'essay', question: 'Sebutkan 2 contoh akibat buruk jika tidak mematuhi aturan di rumah!', displayAnswer: '1. Rumah jadi berantakan, 2. Dimarahi orang tua', explanation: 'Aturan dibuat agar hidup tertib.' }
+      ],
+      pjok: [
+        { id: 1, type: 'mcq', question: 'Gerakan yang dilakukan dengan berpindah tempat disebut gerak...', options: ['Lokomotor', 'Non-lokomotor', 'Manipulatif'], answer: 0, explanation: 'Lokomotor artinya berpindah dari satu titik ke titik lain.' },
+        { id: 2, type: 'mcq', question: 'Gerakan mendorong tubuh ke atas dengan tumpuan satu kaki dinamakan...', options: ['Meloncat', 'Melompat', 'Berlari'], answer: 1, explanation: 'Melompat menggunakan satu kaki, sedangkan meloncat menggunakan dua kaki.' },
+        { id: 3, type: 'mcq', question: 'Saat berjalan ke depan, arah pandangan mata yang benar adalah lurus ke...', options: ['Bawah', 'Atas', 'Depan'], answer: 2, explanation: 'Pandangan lurus ke depan agar tidak menabrak.' },
+        { id: 4, type: 'mcq', question: 'Latihan berlari melintasi rintangan kerucut secara berbelok-belok disebut lari...', options: ['Estafet', 'Zig-zag', 'Cepat'], answer: 1, explanation: 'Zig-zag artinya berbelok-belok arah.' },
+        { id: 5, type: 'mcq', question: 'Gerakan meliukkan badan seperti menirukan benda alam yaitu...', options: ['Batu besar', 'Air mengalir', 'Pohon tertiup angin'], answer: 2, explanation: 'Pohon meliuk saat diterpa angin kencang.' },
+        { id: 6, type: 'fill', question: 'Sebelum melakukan olahraga, kita sebaiknya melakukan ... terlebih dahulu.', acceptedAnswers: ['pemanasan'], displayAnswer: 'Pemanasan', explanation: 'Pemanasan mencegah otot cedera.' },
+        { id: 7, type: 'fill', question: 'Menekuk, mengayun, dan memutar merupakan contoh gerak dasar...', acceptedAnswers: ['non-lokomotor', 'non lokomotor'], displayAnswer: 'Non-lokomotor', explanation: 'Karena dilakukan di tempat.' },
+        { id: 8, type: 'essay', question: 'Sebutkan perbedaan melompat dan meloncat berdasarkan tumpuan kakinya!', displayAnswer: 'Melompat menumpu pada 1 kaki. Meloncat menumpu pada 2 kaki.', explanation: 'Itu adalah perbedaan utamanya.' }
+      ],
+      pabp: [
+        { id: 1, type: 'mcq', question: 'Saat merasa takut atau mendapat bisikan buruk, kita dianjurkan membaca Surah...', options: ['Al-Fatihah', 'An-Nas', 'Al-Ikhlas'], answer: 1, explanation: 'An-Nas berarti manusia, memohon perlindungan.' },
+        { id: 2, type: 'mcq', question: 'Lanjutan dari ayat "Malikin-nās..." adalah...', options: ['Ilāhin-nās', 'Min syarril-waswāsil-khannās', 'Minal jinnati wan-nās'], answer: 0, explanation: 'Ayat ke-3 surat An-Nas adalah Ilāhin-nās.' },
+        { id: 3, type: 'mcq', question: 'Allah memberikan rezeki makanan bagi semua makhluk. Hal ini sesuai dengan Asmaul Husna Ar-Rahman yang artinya...', options: ['Maha Penyayang', 'Maha Pengasih', 'Maha Sejahtera'], answer: 1, explanation: 'Ar-Rahman artinya Maha Pengasih (kasih untuk semua makhluk).' },
+        { id: 4, type: 'mcq', question: 'Sikap saling memaafkan antar teman adalah keteladanan sifat...', options: ['Ar-Rahman', 'Ar-Rahim', 'Al-Mukmin'], answer: 1, explanation: 'Ar-Rahim berarti Penyayang, mengasihi sesama saudara/teman.' },
+        { id: 5, type: 'mcq', question: 'Arti dari Asmaul Husna Al-Mukmin adalah...', options: ['Maha Penyelamat', 'Maha Suci', 'Maha Memberi Keamanan'], answer: 2, explanation: 'Al-Mukmin memberikan rasa aman di hati manusia.' },
+        { id: 6, type: 'fill', question: 'Dalam surat An-Nas, kita memohon perlindungan hanya kepada...', acceptedAnswers: ['allah', 'allah swt'], displayAnswer: 'Allah Swt', explanation: 'Tidak ada pelindung selain Allah.' },
+        { id: 7, type: 'fill', question: 'Mengucapkan salam kepada teman adalah cara menyebarkan rasa...', acceptedAnswers: ['damai', 'keselamatan', 'aman'], displayAnswer: 'Kedamaian / Keselamatan', explanation: 'Sesuai dengan keteladanan As-Salam.' },
+        { id: 8, type: 'essay', question: 'Tuliskan alasan mengapa membaca surat An-Nas dapat membuat hati menjadi tenang!', displayAnswer: 'Karena dengan membacanya, kita dijaga dan dilindungi oleh Allah dari segala keburukan.', explanation: 'Allah adalah sebaik-baik pelindung.' }
+      ]
+    };
+
+    // State
+    let currentSubject = '';
+    let currentQuiz = [];
+    let currentIndex = 0;
+    let userAnswers = {};
+    let studentName = '';
+
+    // DOM Elements
+    const sHome = document.getElementById('screen-home');
+    const sStart = document.getElementById('screen-start');
+    const sQuiz = document.getElementById('screen-quiz');
+    const sResult = document.getElementById('screen-result');
+    const sReview = document.getElementById('screen-review');
+    
+    const badgeActive = document.getElementById('active-subject-badge');
+    const badgeName = document.getElementById('badge-subject-name');
+    const headerBrand = document.getElementById('header-brand');
+
+    headerBrand.addEventListener('click', goToHome);
+
+    function selectSubject(sub) {
+      currentSubject = sub;
+      currentQuiz = allQuizData[sub];
+      
+      const titleMap = { matematika: 'Matematika', pkn: 'Pendidikan Pancasila', pjok: 'PJOK', pabp: 'Pend. Agama Islam' };
+      const iconMap = { matematika: '🧮', pkn: '🤝', pjok: '🏃', pabp: '🕌' };
+      
+      document.getElementById('start-icon').textContent = iconMap[sub];
+      document.getElementById('start-title').textContent = `Kuis ${titleMap[sub]}`;
+      badgeName.textContent = titleMap[sub];
+      badgeActive.classList.remove('hidden');
+      badgeActive.classList.add('flex');
+
+      sHome.classList.add('hidden');
+      sStart.classList.remove('hidden');
+    }
+
+    function startQuiz() {
+      studentName = document.getElementById('student-name').value.trim() || 'Siswa Hebat';
+      userAnswers = {};
+      currentIndex = 0;
+      sStart.classList.add('hidden');
+      sQuiz.classList.remove('hidden');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = currentQuiz[currentIndex];
+      
+      // Progress
+      document.getElementById('progress-fill').style.width = `${((currentIndex + 1) / currentQuiz.length) * 100}%`;
+      document.getElementById('label-progress').textContent = `Soal ${currentIndex + 1} / ${currentQuiz.length}`;
+      document.getElementById('question-number-badge').textContent = currentIndex + 1;
+      document.getElementById('question-text').innerHTML = q.question;
+      
+      // Type Badge
+      const badge = document.getElementById('badge-question-type');
+      if (q.type === 'mcq') { badge.textContent = 'Pilihan Ganda'; badge.className = 'px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-xs font-bold'; }
+      else if (q.type === 'fill') { badge.textContent = 'Isian Singkat'; badge.className = 'px-2 py-1 bg-amber-100 text-amber-800 rounded text-xs font-bold'; }
+      else { badge.textContent = 'Uraian'; badge.className = 'px-2 py-1 bg-rose-100 text-rose-800 rounded text-xs font-bold'; }
+
+      // Illustration
+      const illusBox = document.getElementById('question-illustration');
+      if (q.illustration) { illusBox.innerHTML = q.illustration; illusBox.classList.remove('hidden'); }
+      else { illusBox.classList.add('hidden'); }
+
+      // Options
+      const ansCont = document.getElementById('answer-container');
+      ansCont.innerHTML = '';
+      
+      if (q.type === 'mcq') {
+        const labels = ['A', 'B', 'C'];
+        q.options.forEach((opt, idx) => {
+          const isSel = userAnswers[q.id] === idx;
+          ansCont.innerHTML += `
+            <button onclick="selectOption(${q.id}, ${idx})" class="w-full text-left p-3.5 rounded-2xl border-2 font-semibold text-sm flex items-center gap-3 transition-colors ${isSel ? 'border-indigo-500 bg-indigo-50 text-indigo-900' : 'border-slate-200 hover:bg-slate-50 text-slate-700'}">
+              <span class="w-8 h-8 rounded-xl font-bold flex justify-center items-center shrink-0 ${isSel ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-500'}">${labels[idx]}</span>
+              <span>${opt}</span>
+            </button>
+          `;
+        });
+      } else if (q.type === 'fill') {
+        ansCont.innerHTML = `<input type="text" id="inp-fill" onchange="saveInput(${q.id})" value="${userAnswers[q.id] || ''}" placeholder="Tulis jawaban singkatmu..." class="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 font-bold" />`;
+      } else {
+        ansCont.innerHTML = `<textarea id="inp-essay" onchange="saveArea(${q.id})" placeholder="Tulis penjelasanmu..." rows="3" class="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 font-semibold text-sm">${userAnswers[q.id] || ''}</textarea>`;
+      }
+
+      document.getElementById('btn-prev').disabled = currentIndex === 0;
+      const btnNext = document.getElementById('btn-next');
+      if (currentIndex === currentQuiz.length - 1) {
+        btnNext.innerHTML = `Selesai <i data-lucide="check" class="w-4 h-4"></i>`;
+        btnNext.classList.replace('bg-indigo-500', 'bg-emerald-600');
+        btnNext.classList.replace('hover:bg-indigo-600', 'hover:bg-emerald-700');
+      } else {
+        btnNext.innerHTML = `Lanjut <i data-lucide="chevron-right" class="w-4 h-4"></i>`;
+        btnNext.classList.replace('bg-emerald-600', 'bg-indigo-500');
+        btnNext.classList.replace('hover:bg-emerald-700', 'hover:bg-indigo-600');
+      }
+      lucide.createIcons();
+    }
+
+    function selectOption(qId, val) { userAnswers[qId] = val; renderQuestion(); }
+    function saveInput(qId) { userAnswers[qId] = document.getElementById('inp-fill').value.trim(); }
+    function saveArea(qId) { userAnswers[qId] = document.getElementById('inp-essay').value.trim(); }
+
+    function prevQuestion() {
+      if(currentQuiz[currentIndex].type !== 'mcq') currentQuiz[currentIndex].type === 'fill' ? saveInput(currentQuiz[currentIndex].id) : saveArea(currentQuiz[currentIndex].id);
+      currentIndex--; renderQuestion();
+    }
+    
+    function nextQuestion() {
+      if(currentQuiz[currentIndex].type !== 'mcq') currentQuiz[currentIndex].type === 'fill' ? saveInput(currentQuiz[currentIndex].id) : saveArea(currentQuiz[currentIndex].id);
+      if(currentIndex < currentQuiz.length - 1) { currentIndex++; renderQuestion(); }
+      else finishQuiz();
+    }
+
+    function finishQuiz() {
+      let correct = 0, totalAuto = 0;
+      currentQuiz.forEach(q => {
+        if(q.type === 'mcq') {
+          totalAuto++;
+          if(userAnswers[q.id] === q.answer) correct++;
+        } else if(q.type === 'fill') {
+          totalAuto++;
+          const ans = (userAnswers[q.id]||'').toLowerCase();
+          if(q.acceptedAnswers.includes(ans)) correct++;
+        }
+      });
+      const score = Math.round((correct / totalAuto) * 100);
+      document.getElementById('display-name').textContent = studentName;
+      document.getElementById('final-score').textContent = score;
+      
+      sQuiz.classList.add('hidden');
+      sResult.classList.remove('hidden');
+    }
+
+    function showReview() {
+      const list = document.getElementById('review-list');
+      list.innerHTML = '';
+      currentQuiz.forEach((q, i) => {
+        let isCorrect = false, userDisp = userAnswers[q.id];
+        if(q.type === 'mcq') {
+          isCorrect = userDisp === q.answer;
+          userDisp = userDisp !== undefined ? q.options[userDisp] : '-';
+        } else if(q.type === 'fill') {
+          isCorrect = q.acceptedAnswers.includes((userDisp||'').toLowerCase());
+        }
+        
+        let badge = q.type === 'essay' ? '<span class="px-2 py-1 bg-amber-100 text-amber-800 rounded text-xs font-bold">Uraian</span>' :
+                    isCorrect ? '<span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded text-xs font-bold">Benar</span>' :
+                                '<span class="px-2 py-1 bg-rose-100 text-rose-800 rounded text-xs font-bold">Salah</span>';
+
+        list.innerHTML += `
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm">
+            <div class="flex justify-between mb-2"><strong class="text-slate-500">Soal ${i+1}</strong> ${badge}</div>
+            <p class="font-bold mb-3">${q.question}</p>
+            <p class="text-slate-600 text-xs">Jawaban Kamu: <strong>${userDisp||'-'}</strong></p>
+            <p class="text-emerald-700 text-xs mt-1">Kunci: <strong>${q.type === 'mcq' ? q.options[q.answer] : q.displayAnswer}</strong></p>
+            <p class="text-indigo-700 text-xs mt-2 p-2 bg-indigo-50 rounded">💡 ${q.explanation}</p>
+          </div>
+        `;
+      });
+      sResult.classList.add('hidden');
+      sReview.classList.remove('hidden');
+    }
+
+    function backToResult() { sReview.classList.add('hidden'); sResult.classList.remove('hidden'); }
+    function goToHome() {
+      sStart.classList.add('hidden'); sQuiz.classList.add('hidden'); sResult.classList.add('hidden'); sReview.classList.add('hidden');
+      sHome.classList.remove('hidden');
+      badgeActive.classList.add('hidden');
+      badgeActive.classList.remove('flex');
+    }
+    
+    lucide.createIcons();
+  </script>
+</body>
+</html>
