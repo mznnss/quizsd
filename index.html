@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal Kuis Pintar - Ujian Acak</title>
+  <title>Portal Kuis Pintar</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -13,15 +13,15 @@
     .btn-bounce { transition: all 0.15s ease-in-out; }
     .btn-bounce:hover { transform: translateY(-2px); }
     .btn-bounce:active { transform: translateY(2px); }
-    /* Animasi khusus untuk pop-up modal */
-    .modal-enter { animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-    @keyframes modalPop {
-      0% { opacity: 0; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1); }
-    }
   </style>
 </head>
-<body class="bg-indigo-50 min-h-screen text-slate-800 antialiased flex flex-col justify-between">
+<body class="bg-indigo-50 min-h-screen text-slate-800 antialiased flex flex-col justify-between overflow-x-hidden">
+
+  <!-- Custom Toast Notification -->
+  <div id="custom-toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-rose-500 text-white px-6 py-3.5 rounded-2xl shadow-2xl z-[100] flex items-center gap-3 transition-all duration-300 transform -translate-y-32 opacity-0 font-bold text-sm w-11/12 max-w-sm">
+    <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
+    <span id="toast-message">Pesan Notifikasi</span>
+  </div>
 
   <!-- Header -->
   <header class="bg-white border-b-4 border-indigo-200 sticky top-0 z-50 shadow-sm">
@@ -30,7 +30,7 @@
         <span class="text-3xl p-2 bg-indigo-100 rounded-2xl flex items-center justify-center border-2 border-indigo-300">🏫</span>
         <div>
           <h1 class="text-lg md:text-xl font-bold text-indigo-700 leading-tight font-heading">Portal Kuis Pintar</h1>
-          <p class="text-xs text-slate-500 font-semibold">Sistem Bank Soal Sesuai Kisi-Kisi</p>
+          <p class="text-xs text-slate-500 font-semibold" id="header-subtitle">Ujian Sekolah Dasar</p>
         </div>
       </div>
       <div id="active-subject-badge" class="hidden items-center gap-2 bg-amber-100 px-3 py-1.5 rounded-full border border-amber-300 text-xs font-bold text-amber-800">
@@ -42,96 +42,83 @@
   <!-- Main Container -->
   <main class="max-w-5xl mx-auto w-full px-4 py-6 flex-1 flex flex-col justify-center">
 
-    <!-- Screen 0: Subject Selection -->
-    <div id="screen-home" class="space-y-6 max-w-4xl mx-auto">
-      <div class="text-center space-y-2 mb-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Pilih Mata Pelajaran</h2>
-        <p class="text-slate-600 text-sm">Setiap siswa akan mendapatkan soal yang diacak secara otomatis!</p>
+    <!-- Screen 0: Select Class -->
+    <div id="screen-select-class" class="max-w-2xl mx-auto space-y-6 w-full text-center">
+      <div class="mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Selamat Datang!</h2>
+        <p class="text-slate-600 text-sm mt-2">Silakan pilih kelasmu terlebih dahulu.</p>
       </div>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <!-- Card Matematika -->
-        <button onclick="selectSubject('matematika')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-amber-200 shadow-lg text-left flex items-center gap-4 hover:border-amber-400">
-          <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🧮</div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Matematika</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
-          </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <button onclick="openPasswordScreen(1)" class="btn-bounce bg-white p-8 rounded-3xl border-4 border-orange-200 shadow-xl flex flex-col items-center justify-center gap-3 hover:border-orange-400 group">
+          <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">🥇</div>
+          <h3 class="text-2xl font-bold text-slate-800 font-heading">Kelas 1</h3>
+          <p class="text-xs font-semibold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">Butuh Password</p>
         </button>
-        <!-- Card Bahasa Indonesia -->
-        <button onclick="selectSubject('bahasaindonesia')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-teal-200 shadow-lg text-left flex items-center gap-4 hover:border-teal-400">
-          <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">📖</div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">B. Indonesia</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
-          </div>
-        </button>
-        <!-- Card Bahasa Jawa -->
-        <button onclick="selectSubject('bahasajawa')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-orange-200 shadow-lg text-left flex items-center gap-4 hover:border-orange-400">
-          <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🎭</div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Bahasa Jawa</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 1 (Password)</p>
-          </div>
-        </button>
-        <!-- Card PKN -->
-        <button onclick="selectSubject('pkn')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-rose-200 shadow-lg text-left flex items-center gap-4 hover:border-rose-400">
-          <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🤝</div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Pend. Pancasila</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
-          </div>
-        </button>
-        <!-- Card PJOK -->
-        <button onclick="selectSubject('pjok')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-emerald-200 shadow-lg text-left flex items-center gap-4 hover:border-emerald-400">
-          <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🏃</div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">PJOK</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
-          </div>
-        </button>
-        <!-- Card PABP -->
-        <button onclick="selectSubject('pabp')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-sky-200 shadow-lg text-left flex items-center gap-4 hover:border-sky-400">
-          <div class="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🕌</div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">PABP</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
-          </div>
+        <button onclick="openPasswordScreen(2)" class="btn-bounce bg-white p-8 rounded-3xl border-4 border-sky-200 shadow-xl flex flex-col items-center justify-center gap-3 hover:border-sky-400 group">
+          <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">🥈</div>
+          <h3 class="text-2xl font-bold text-slate-800 font-heading">Kelas 2</h3>
+          <p class="text-xs font-semibold text-sky-600 bg-sky-50 px-3 py-1 rounded-full">Butuh Password</p>
         </button>
       </div>
     </div>
 
-    <!-- Screen 1: Start Screen -->
-    <div id="screen-start" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6 max-w-2xl mx-auto">
-      <div class="inline-block p-4 bg-indigo-100 rounded-full text-5xl mb-2 animate-bounce" id="start-icon">🦁</div>
+    <!-- Screen 1: Password Verification -->
+    <div id="screen-password" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-slate-200 shadow-xl text-center space-y-6 max-w-md mx-auto w-full">
+      <div class="inline-block p-4 bg-slate-100 rounded-full text-4xl mb-2">🔒</div>
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading" id="start-title">Siap Mengerjakan Kuis?</h2>
-        <p class="text-slate-600 text-sm md:text-base mt-2">Kuis ini dikunci. Masukkan nama dan password yang benar.</p>
+        <h2 class="text-2xl font-bold text-slate-800 font-heading">Akses Kelas <span id="pwd-class-label"></span></h2>
+        <p class="text-slate-600 text-sm mt-2">Masukkan password untuk membuka soal.</p>
       </div>
-      
-      <!-- Input Nama -->
+      <div class="text-left space-y-2">
+        <input id="class-password" type="password" placeholder="Ketik password di sini..." class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-300 focus:outline-none focus:border-indigo-500 bg-slate-50 font-bold text-slate-800 placeholder:text-slate-400 text-center tracking-widest text-lg" />
+      </div>
+      <div class="pt-2">
+        <button onclick="verifyPassword()" class="btn-bounce w-full bg-indigo-500 hover:bg-indigo-600 text-white font-heading font-bold text-lg px-6 py-3.5 rounded-2xl shadow-lg flex items-center justify-center gap-2">
+          <span>Buka Pelajaran</span>
+          <i data-lucide="key" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <button onclick="goToHome()" class="text-sm font-bold text-slate-400 hover:text-slate-600 underline">Kembali pilih kelas</button>
+    </div>
+
+    <!-- Screen 2: Select Subject -->
+    <div id="screen-select-subject" class="hidden max-w-4xl mx-auto w-full space-y-6">
+      <div class="text-center space-y-2 mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Pelajaran Kelas <span id="subj-class-label"></span></h2>
+        <p class="text-slate-600 text-sm">Pilih pelajaran yang ingin kamu kerjakan.</p>
+      </div>
+      <div id="subject-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <!-- Rendered by JS based on Class -->
+      </div>
+      <div class="text-center pt-6">
+        <button onclick="goToHome()" class="text-sm font-bold text-slate-400 hover:text-slate-600 underline flex items-center justify-center gap-1 mx-auto">
+          <i data-lucide="log-out" class="w-4 h-4"></i> Keluar Kelas
+        </button>
+      </div>
+    </div>
+
+    <!-- Screen 3: Start Screen (Name Input) -->
+    <div id="screen-start" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6 max-w-2xl mx-auto w-full">
+      <div class="inline-block p-4 bg-indigo-100 rounded-full text-5xl mb-2 animate-bounce" id="start-icon">📝</div>
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading" id="start-title">Siap Memulai?</h2>
+        <p class="text-slate-600 text-sm mt-2">Soal akan diacak. Tulis namamu dulu ya!</p>
+      </div>
       <div class="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200 max-w-sm mx-auto text-left space-y-2">
-        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Nama Siswa:</label>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Nama Siswa Hebat:</label>
         <input id="student-name" type="text" placeholder="Tulis namamu di sini..." class="w-full px-4 py-3 rounded-xl border-2 border-indigo-300 focus:outline-none focus:border-indigo-500 bg-white font-semibold text-slate-700 placeholder:text-slate-400" />
       </div>
-
-      <!-- Input Password -->
-      <div class="bg-amber-50 p-4 rounded-2xl border-2 border-amber-200 max-w-sm mx-auto text-left space-y-2">
-        <label class="block text-xs font-bold uppercase tracking-wider text-amber-800">Password Kuis:</label>
-        <input id="quiz-password" type="password" placeholder="Masukkan password..." class="w-full px-4 py-3 rounded-xl border-2 border-amber-300 focus:outline-none focus:border-amber-500 bg-white font-semibold text-slate-700 placeholder:text-slate-400" />
-      </div>
-
       <div>
-        <button onclick="startQuiz()" class="btn-bounce bg-indigo-500 hover:bg-indigo-600 text-white font-heading font-bold text-lg md:text-xl px-10 py-4 rounded-2xl shadow-lg flex items-center gap-2 mx-auto">
+        <button onclick="startQuiz()" class="btn-bounce bg-emerald-500 hover:bg-emerald-600 text-white font-heading font-bold text-lg md:text-xl px-10 py-4 rounded-2xl shadow-lg flex items-center justify-center gap-2 mx-auto w-full max-w-sm">
           <span>Acak Soal & Mulai!</span>
-          <i data-lucide="unlock" class="w-5 h-5 fill-current"></i>
+          <i data-lucide="play" class="w-5 h-5 fill-current"></i>
         </button>
       </div>
-      <button onclick="goToHome()" class="text-sm font-bold text-slate-400 hover:text-slate-600 underline">Kembali pilih pelajaran</button>
+      <button onclick="backToSubjects()" class="text-sm font-bold text-slate-400 hover:text-slate-600 underline">Batal, kembali pilih pelajaran</button>
     </div>
 
-    <!-- Screen 2: Quiz -->
-    <div id="screen-quiz" class="hidden space-y-4 max-w-3xl mx-auto">
+    <!-- Screen 4: Quiz -->
+    <div id="screen-quiz" class="hidden space-y-4 max-w-3xl mx-auto w-full">
       <div class="bg-white px-4 py-3 rounded-2xl border-2 border-indigo-100 shadow-sm flex flex-col gap-2">
         <div class="flex items-center justify-between text-xs font-bold text-slate-600">
           <span id="badge-question-type" class="px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded-lg">Pilihan Ganda</span>
@@ -162,8 +149,8 @@
       </div>
     </div>
 
-    <!-- Screen 3: Result -->
-    <div id="screen-result" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6 max-w-2xl mx-auto">
+    <!-- Screen 5: Result -->
+    <div id="screen-result" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6 max-w-2xl mx-auto w-full">
       <div id="result-badge" class="inline-block p-4 bg-emerald-100 rounded-full text-5xl">🎉</div>
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Selesai, <span id="display-name" class="text-indigo-600">Siswa</span>!</h2>
@@ -177,20 +164,20 @@
       </div>
       <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
         <button onclick="showReview()" class="btn-bounce px-6 py-3 rounded-2xl border-2 border-indigo-400 font-bold text-indigo-700 hover:bg-indigo-50 flex items-center justify-center gap-2 text-sm">
-          <i data-lucide="file-text" class="w-4 h-4"></i> Kunci & Pembahasan
+          <i data-lucide="file-text" class="w-4 h-4"></i> Kunci Jawaban
         </button>
         <button onclick="goToHome()" class="btn-bounce bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-2xl shadow-md flex items-center justify-center gap-2 text-sm">
-          <i data-lucide="home" class="w-4 h-4"></i> Kembali ke Menu
+          <i data-lucide="home" class="w-4 h-4"></i> Halaman Utama
         </button>
       </div>
     </div>
 
-    <!-- Screen 4: Review -->
-    <div id="screen-review" class="hidden space-y-6 max-w-3xl mx-auto">
+    <!-- Screen 6: Review -->
+    <div id="screen-review" class="hidden space-y-6 max-w-3xl mx-auto w-full">
       <div class="flex items-center justify-between">
         <h2 class="text-xl md:text-2xl font-bold text-slate-800 font-heading">Pembahasan Jawaban</h2>
-        <button onclick="backToResult()" class="text-xs font-bold text-indigo-700 hover:underline flex items-center gap-1">
-          <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali ke Skor
+        <button onclick="backToResult()" class="text-xs font-bold text-indigo-700 hover:underline flex items-center gap-1 bg-white px-3 py-2 rounded-lg border border-indigo-200 shadow-sm">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali
         </button>
       </div>
       <div id="review-list" class="space-y-4"></div>
@@ -198,25 +185,9 @@
 
   </main>
 
-  <!-- CUSTOM PASSWORD MODAL (NOTIFIKASI RESPONSIF) -->
-  <div id="password-modal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] items-center justify-center px-4">
-    <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl border-4 border-rose-200 text-center modal-enter">
-      <div class="inline-block p-4 bg-rose-100 rounded-full text-5xl mb-4">
-        🔒
-      </div>
-      <h3 class="text-2xl font-bold text-slate-800 font-heading mb-2">Wah, Password Salah!</h3>
-      <p id="password-error-msg" class="text-sm text-slate-600 font-medium mb-6 leading-relaxed">
-        Pesan error akan muncul di sini.
-      </p>
-      <button onclick="closePasswordModal()" class="w-full btn-bounce bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 rounded-xl shadow-md">
-        Coba Lagi
-      </button>
-    </div>
-  </div>
-
   <script>
     // =========================================================================
-    // DATABASE BANK SOAL ACAK (CONDITIONAL RANDOMIZER)
+    // DATABASE BANK SOAL (MATEMATIKA, B.INDO, PKN, PJOK, PABP, B.JAWA)
     // =========================================================================
     const bankSoal = {
       matematika: [
@@ -439,99 +410,153 @@
     };
 
     // =========================================================================
-    // APPLICATION STATE & LOGIC
+    // APPLICATION STATE & UI LOGIC
     // =========================================================================
+    let currentClassLevel = 0; // 1 atau 2
     let currentSubject = '';
     let currentQuizSession = []; 
     let currentIndex = 0;
     let userAnswers = {};
     let studentName = '';
 
-    const sHome = document.getElementById('screen-home');
+    // Data UI Mapel berdasarkan kelas
+    const subjectUIData = {
+      1: [
+        { id: 'bahasajawa', name: 'Bahasa Jawa', icon: '🎭', color: 'orange' }
+      ],
+      2: [
+        { id: 'matematika', name: 'Matematika', icon: '🧮', color: 'amber' },
+        { id: 'bahasaindonesia', name: 'B. Indonesia', icon: '📖', color: 'teal' },
+        { id: 'pkn', name: 'Pend. Pancasila', icon: '🤝', color: 'rose' },
+        { id: 'pjok', name: 'PJOK', icon: '🏃', color: 'emerald' },
+        { id: 'pabp', name: 'PABP', icon: '🕌', color: 'sky' }
+      ]
+    };
+
+    // Elements
+    const sSelectClass = document.getElementById('screen-select-class');
+    const sPassword = document.getElementById('screen-password');
+    const sSelectSubject = document.getElementById('screen-select-subject');
     const sStart = document.getElementById('screen-start');
     const sQuiz = document.getElementById('screen-quiz');
     const sResult = document.getElementById('screen-result');
     const sReview = document.getElementById('screen-review');
-    
-    const badgeActive = document.getElementById('active-subject-badge');
-    const badgeName = document.getElementById('badge-subject-name');
+    const toast = document.getElementById('custom-toast');
+    const toastMsg = document.getElementById('toast-message');
 
-    function selectSubject(sub) {
-      currentSubject = sub;
+    // 1. Fungsi menampilkan Toast Notifikasi
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.remove('-translate-y-32', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
       
-      const titleMap = { 
-        matematika: 'Matematika', 
-        bahasaindonesia: 'B. Indonesia', 
-        bahasajawa: 'Bahasa Jawa', 
-        pkn: 'Pend. Pancasila', 
-        pjok: 'PJOK', 
-        pabp: 'PABP' 
-      };
-      const iconMap = { 
-        matematika: '🧮', 
-        bahasaindonesia: '📖', 
-        bahasajawa: '🎭', 
-        pkn: '🤝', 
-        pjok: '🏃', 
-        pabp: '🕌' 
-      };
-      
-      document.getElementById('start-icon').textContent = iconMap[sub];
-      document.getElementById('start-title').textContent = `Kuis ${titleMap[sub]}`;
-      badgeName.textContent = titleMap[sub];
-      badgeActive.classList.remove('hidden');
-      badgeActive.classList.add('flex');
+      // Sembunyikan setelah 3 detik
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('-translate-y-32', 'opacity-0');
+      }, 3000);
+    }
 
-      sHome.classList.add('hidden');
+    // 2. Fungsi buka layar password
+    function openPasswordScreen(classLvl) {
+      currentClassLevel = classLvl;
+      document.getElementById('pwd-class-label').textContent = classLvl;
+      document.getElementById('class-password').value = '';
+      
+      sSelectClass.classList.add('hidden');
+      sPassword.classList.remove('hidden');
+    }
+
+    // 3. Fungsi validasi password
+    function verifyPassword() {
+      const pwd = document.getElementById('class-password').value.trim();
+      
+      let expectedPwd = currentClassLevel === 1 ? 'siompong' : 'zieljelek';
+
+      if (pwd !== expectedPwd) {
+        showToast('Maaf, password kamu salah! Coba lagi.');
+        return;
+      }
+
+      // Jika benar, lanjut ke daftar mapel kelas tersebut
+      sPassword.classList.add('hidden');
+      renderSubjects();
+      sSelectSubject.classList.remove('hidden');
+    }
+
+    // 4. Render kotak mapel sesuai kelas
+    function renderSubjects() {
+      document.getElementById('subj-class-label').textContent = currentClassLevel;
+      const container = document.getElementById('subject-container');
+      container.innerHTML = '';
+
+      const subjects = subjectUIData[currentClassLevel];
+      subjects.forEach(subj => {
+        // Tailwind class mapping agar tidak hilang saat dipurge
+        const borderColors = {
+          'orange': 'border-orange-200 hover:border-orange-400',
+          'amber': 'border-amber-200 hover:border-amber-400',
+          'teal': 'border-teal-200 hover:border-teal-400',
+          'rose': 'border-rose-200 hover:border-rose-400',
+          'emerald': 'border-emerald-200 hover:border-emerald-400',
+          'sky': 'border-sky-200 hover:border-sky-400'
+        };
+        const bgColors = {
+          'orange': 'bg-orange-100', 'amber': 'bg-amber-100', 'teal': 'bg-teal-100',
+          'rose': 'bg-rose-100', 'emerald': 'bg-emerald-100', 'sky': 'bg-sky-100'
+        };
+
+        const btn = document.createElement('button');
+        btn.onclick = () => selectSubject(subj.id, subj.name, subj.icon);
+        btn.className = `btn-bounce bg-white p-6 rounded-3xl border-4 ${borderColors[subj.color]} shadow-lg text-left flex items-center gap-4 group`;
+        
+        btn.innerHTML = `
+          <div class="w-16 h-16 ${bgColors[subj.color]} rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">${subj.icon}</div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">${subj.name}</h3>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">Soal Acak Otomatis</p>
+          </div>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    // 5. Pilih mapel
+    function selectSubject(subId, subName, subIcon) {
+      currentSubject = subId;
+      
+      document.getElementById('start-icon').textContent = subIcon;
+      document.getElementById('start-title').textContent = `Kuis ${subName}`;
+      
+      document.getElementById('badge-subject-name').textContent = subName;
+      document.getElementById('active-subject-badge').classList.remove('hidden');
+      document.getElementById('active-subject-badge').classList.add('flex');
+
+      document.getElementById('student-name').value = '';
+      
+      sSelectSubject.classList.add('hidden');
       sStart.classList.remove('hidden');
     }
 
-    // FUNGSI NOTIFIKASI ERROR CUSTOM
-    function showPasswordError(isKelas1) {
-      const modal = document.getElementById('password-modal');
-      const msg = document.getElementById('password-error-msg');
-      
-      if(isKelas1) {
-         msg.innerHTML = "Password yang kamu masukkan salah!<br><span class='text-rose-600 font-bold block mt-2'>Gunakan password khusus Kelas 1.</span>";
-      } else {
-         msg.innerHTML = "Password yang kamu masukkan salah!<br><span class='text-rose-600 font-bold block mt-2'>Gunakan password khusus Kelas 2.</span>";
-      }
-      
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+    function backToSubjects() {
+      sStart.classList.add('hidden');
+      document.getElementById('active-subject-badge').classList.add('hidden');
+      document.getElementById('active-subject-badge').classList.remove('flex');
+      sSelectSubject.classList.remove('hidden');
     }
 
-    function closePasswordModal() {
-      const modal = document.getElementById('password-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
+    // 6. Mulai kuis
     function startQuiz() {
-      // ----------------------------------------------------
-      // SISTEM VERIFIKASI PASSWORD
-      // ----------------------------------------------------
-      const passwordInput = document.getElementById('quiz-password').value.trim();
-      
-      let expectedPassword = "zieljelek"; 
-      let isKelas1 = false;
-      
-      if (currentSubject === "bahasajawa") {
-        expectedPassword = "siompong"; 
-        isKelas1 = true;
+      studentName = document.getElementById('student-name').value.trim();
+      if (!studentName) {
+        showToast('Jangan lupa tulis namamu dulu ya!');
+        return;
       }
 
-      // Validasi dengan Modal Responsif
-      if (passwordInput !== expectedPassword) {
-        showPasswordError(isKelas1);
-        return; 
-      }
-
-      // Jika password benar, lanjut ke persiapan kuis
-      studentName = document.getElementById('student-name').value.trim() || 'Siswa Hebat';
       userAnswers = {};
       currentIndex = 0;
 
+      // Randomizer
       const subjectData = bankSoal[currentSubject];
       currentQuizSession = subjectData.map((indicatorVariations, index) => {
         const randomVarIndex = Math.floor(Math.random() * indicatorVariations.length);
@@ -544,6 +569,7 @@
       renderQuestion();
     }
 
+    // 7. Render Soal
     function renderQuestion() {
       const q = currentQuizSession[currentIndex];
       const totalSoal = currentQuizSession.length;
@@ -680,14 +706,20 @@
     }
     
     function goToHome() {
-      // Kosongkan kembali input password saat kembali ke halaman awal
-      document.getElementById('quiz-password').value = '';
+      // Sembunyikan semua layar
+      sPassword.classList.add('hidden');
+      sSelectSubject.classList.add('hidden');
+      sStart.classList.add('hidden'); 
+      sQuiz.classList.add('hidden'); 
+      sResult.classList.add('hidden'); 
+      sReview.classList.add('hidden');
       
-      sStart.classList.add('hidden'); sQuiz.classList.add('hidden'); 
-      sResult.classList.add('hidden'); sReview.classList.add('hidden');
-      sHome.classList.remove('hidden');
-      badgeActive.classList.add('hidden');
-      badgeActive.classList.remove('flex');
+      // Hilangkan badge atas
+      document.getElementById('active-subject-badge').classList.add('hidden');
+      document.getElementById('active-subject-badge').classList.remove('flex');
+      
+      // Tampilkan layar pilih kelas
+      sSelectClass.classList.remove('hidden');
     }
     
     lucide.createIcons();
