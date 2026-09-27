@@ -49,7 +49,7 @@
           <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🧮</div>
           <div>
             <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Matematika</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">20 Soal Acak</p>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
           </div>
         </button>
         <!-- Card Bahasa Indonesia -->
@@ -57,7 +57,7 @@
           <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">📖</div>
           <div>
             <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">B. Indonesia</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
           </div>
         </button>
         <!-- Card Bahasa Jawa -->
@@ -65,7 +65,7 @@
           <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🎭</div>
           <div>
             <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Bahasa Jawa</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 1 (Password)</p>
           </div>
         </button>
         <!-- Card PKN -->
@@ -73,7 +73,7 @@
           <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🤝</div>
           <div>
             <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Pend. Pancasila</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
           </div>
         </button>
         <!-- Card PJOK -->
@@ -81,7 +81,7 @@
           <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🏃</div>
           <div>
             <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">PJOK</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
           </div>
         </button>
         <!-- Card PABP -->
@@ -89,7 +89,7 @@
           <div class="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🕌</div>
           <div>
             <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">PABP</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">Kelas 2 (Password)</p>
           </div>
         </button>
       </div>
@@ -100,16 +100,25 @@
       <div class="inline-block p-4 bg-indigo-100 rounded-full text-5xl mb-2 animate-bounce" id="start-icon">🦁</div>
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading" id="start-title">Siap Mengerjakan Kuis?</h2>
-        <p class="text-slate-600 text-sm md:text-base mt-2">Soalmu akan diacak dari Bank Soal kami.</p>
+        <p class="text-slate-600 text-sm md:text-base mt-2">Kuis ini dikunci. Masukkan nama dan password yang benar.</p>
       </div>
-      <div class="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200 max-w-sm mx-auto text-left space-y-3">
-        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Nama Siswa Hebat:</label>
+      
+      <!-- Input Nama -->
+      <div class="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200 max-w-sm mx-auto text-left space-y-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Nama Siswa:</label>
         <input id="student-name" type="text" placeholder="Tulis namamu di sini..." class="w-full px-4 py-3 rounded-xl border-2 border-indigo-300 focus:outline-none focus:border-indigo-500 bg-white font-semibold text-slate-700 placeholder:text-slate-400" />
       </div>
+
+      <!-- Input Password (BARU) -->
+      <div class="bg-amber-50 p-4 rounded-2xl border-2 border-amber-200 max-w-sm mx-auto text-left space-y-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-amber-800">Password Kuis:</label>
+        <input id="quiz-password" type="password" placeholder="Masukkan password..." class="w-full px-4 py-3 rounded-xl border-2 border-amber-300 focus:outline-none focus:border-amber-500 bg-white font-semibold text-slate-700 placeholder:text-slate-400" />
+      </div>
+
       <div>
         <button onclick="startQuiz()" class="btn-bounce bg-indigo-500 hover:bg-indigo-600 text-white font-heading font-bold text-lg md:text-xl px-10 py-4 rounded-2xl shadow-lg flex items-center gap-2 mx-auto">
           <span>Acak Soal & Mulai!</span>
-          <i data-lucide="shuffle" class="w-5 h-5 fill-current"></i>
+          <i data-lucide="unlock" class="w-5 h-5 fill-current"></i>
         </button>
       </div>
       <button onclick="goToHome()" class="text-sm font-bold text-slate-400 hover:text-slate-600 underline">Kembali pilih pelajaran</button>
@@ -186,7 +195,6 @@
   <script>
     // =========================================================================
     // DATABASE BANK SOAL ACAK (CONDITIONAL RANDOMIZER)
-    // Setiap Indikator Kisi-kisi berupa Array [] yang berisi variasi soal.
     // =========================================================================
     const bankSoal = {
       matematika: [
@@ -457,6 +465,23 @@
     }
 
     function startQuiz() {
+      // ----------------------------------------------------
+      // SISTEM VERIFIKASI PASSWORD
+      // ----------------------------------------------------
+      const passwordInput = document.getElementById('quiz-password').value.trim();
+      
+      let expectedPassword = "zieljelek"; // Password default (Kelas 2)
+      if (currentSubject === "bahasajawa") {
+        expectedPassword = "siompong"; // Password khusus Bahasa Jawa (Kelas 1)
+      }
+
+      // Validasi
+      if (passwordInput !== expectedPassword) {
+        alert("Maaf, password yang kamu masukkan salah! Silakan coba lagi.");
+        return; // Hentikan fungsi jika password salah
+      }
+
+      // Jika password benar, lanjut ke persiapan kuis
       studentName = document.getElementById('student-name').value.trim() || 'Siswa Hebat';
       userAnswers = {};
       currentIndex = 0;
@@ -609,6 +634,9 @@
     }
     
     function goToHome() {
+      // Kosongkan kembali input password saat kembali ke halaman awal
+      document.getElementById('quiz-password').value = '';
+      
       sStart.classList.add('hidden'); sQuiz.classList.add('hidden'); 
       sResult.classList.add('hidden'); sReview.classList.add('hidden');
       sHome.classList.remove('hidden');
