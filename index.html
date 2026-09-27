@@ -19,7 +19,7 @@
 
   <!-- Header -->
   <header class="bg-white border-b-4 border-indigo-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3" id="header-brand" style="cursor: pointer;" onclick="goToHome()">
         <span class="text-3xl p-2 bg-indigo-100 rounded-2xl flex items-center justify-center border-2 border-indigo-300">🏫</span>
         <div>
@@ -34,61 +34,69 @@
   </header>
 
   <!-- Main Container -->
-  <main class="max-w-3xl mx-auto w-full px-4 py-6 flex-1 flex flex-col justify-center">
+  <main class="max-w-5xl mx-auto w-full px-4 py-6 flex-1 flex flex-col justify-center">
 
     <!-- Screen 0: Subject Selection -->
-    <div id="screen-home" class="space-y-6">
+    <div id="screen-home" class="space-y-6 max-w-4xl mx-auto">
       <div class="text-center space-y-2 mb-8">
         <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Pilih Mata Pelajaran</h2>
         <p class="text-slate-600 text-sm">Setiap siswa akan mendapatkan soal yang diacak secara otomatis!</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <!-- Card Matematika -->
         <button onclick="selectSubject('matematika')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-amber-200 shadow-lg text-left flex items-center gap-4 hover:border-amber-400">
-          <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl">🧮</div>
+          <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🧮</div>
           <div>
-            <h3 class="text-xl font-bold text-slate-800 font-heading">Matematika</h3>
-            <p class="text-xs font-semibold text-slate-500 mt-1">20 Soal • Hitung & Logika</p>
+            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Matematika</h3>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">20 Soal Acak</p>
           </div>
         </button>
         <!-- Card Bahasa Indonesia -->
         <button onclick="selectSubject('bahasaindonesia')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-teal-200 shadow-lg text-left flex items-center gap-4 hover:border-teal-400">
-          <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center text-3xl">📖</div>
+          <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">📖</div>
           <div>
-            <h3 class="text-xl font-bold text-slate-800 font-heading">Bahasa Indonesia</h3>
-            <p class="text-xs font-semibold text-slate-500 mt-1">25 Soal • Membaca & Menulis</p>
+            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">B. Indonesia</h3>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
+          </div>
+        </button>
+        <!-- Card Bahasa Jawa -->
+        <button onclick="selectSubject('bahasajawa')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-orange-200 shadow-lg text-left flex items-center gap-4 hover:border-orange-400">
+          <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🎭</div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Bahasa Jawa</h3>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
           </div>
         </button>
         <!-- Card PKN -->
         <button onclick="selectSubject('pkn')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-rose-200 shadow-lg text-left flex items-center gap-4 hover:border-rose-400">
-          <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center text-3xl">🤝</div>
+          <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🤝</div>
           <div>
-            <h3 class="text-xl font-bold text-slate-800 font-heading">Pend. Pancasila</h3>
-            <p class="text-xs font-semibold text-slate-500 mt-1">25 Soal • Aturan & Sikap</p>
+            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">Pend. Pancasila</h3>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
           </div>
         </button>
         <!-- Card PJOK -->
         <button onclick="selectSubject('pjok')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-emerald-200 shadow-lg text-left flex items-center gap-4 hover:border-emerald-400">
-          <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl">🏃</div>
+          <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🏃</div>
           <div>
-            <h3 class="text-xl font-bold text-slate-800 font-heading">PJOK</h3>
-            <p class="text-xs font-semibold text-slate-500 mt-1">25 Soal • Gerak Jasmani</p>
+            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">PJOK</h3>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
           </div>
         </button>
         <!-- Card PABP -->
-        <button onclick="selectSubject('pabp')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-sky-200 shadow-lg text-left flex items-center gap-4 hover:border-sky-400 md:col-span-2 md:w-1/2 md:mx-auto">
-          <div class="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center text-3xl">🕌</div>
+        <button onclick="selectSubject('pabp')" class="btn-bounce bg-white p-6 rounded-3xl border-4 border-sky-200 shadow-lg text-left flex items-center gap-4 hover:border-sky-400">
+          <div class="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center text-3xl shrink-0">🕌</div>
           <div>
-            <h3 class="text-xl font-bold text-slate-800 font-heading">PABP</h3>
-            <p class="text-xs font-semibold text-slate-500 mt-1">25 Soal • Agama & Budi Pekerti</p>
+            <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">PABP</h3>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">25 Soal Acak</p>
           </div>
         </button>
       </div>
     </div>
 
     <!-- Screen 1: Start Screen -->
-    <div id="screen-start" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6">
+    <div id="screen-start" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6 max-w-2xl mx-auto">
       <div class="inline-block p-4 bg-indigo-100 rounded-full text-5xl mb-2 animate-bounce" id="start-icon">🦁</div>
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading" id="start-title">Siap Mengerjakan Kuis?</h2>
@@ -108,7 +116,7 @@
     </div>
 
     <!-- Screen 2: Quiz -->
-    <div id="screen-quiz" class="hidden space-y-4">
+    <div id="screen-quiz" class="hidden space-y-4 max-w-3xl mx-auto">
       <div class="bg-white px-4 py-3 rounded-2xl border-2 border-indigo-100 shadow-sm flex flex-col gap-2">
         <div class="flex items-center justify-between text-xs font-bold text-slate-600">
           <span id="badge-question-type" class="px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded-lg">Pilihan Ganda</span>
@@ -140,7 +148,7 @@
     </div>
 
     <!-- Screen 3: Result -->
-    <div id="screen-result" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6">
+    <div id="screen-result" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6 max-w-2xl mx-auto">
       <div id="result-badge" class="inline-block p-4 bg-emerald-100 rounded-full text-5xl">🎉</div>
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Selesai, <span id="display-name" class="text-indigo-600">Siswa</span>!</h2>
@@ -163,7 +171,7 @@
     </div>
 
     <!-- Screen 4: Review -->
-    <div id="screen-review" class="hidden space-y-6">
+    <div id="screen-review" class="hidden space-y-6 max-w-3xl mx-auto">
       <div class="flex items-center justify-between">
         <h2 class="text-xl md:text-2xl font-bold text-slate-800 font-heading">Pembahasan Jawaban</h2>
         <button onclick="backToResult()" class="text-xs font-bold text-indigo-700 hover:underline flex items-center gap-1">
@@ -179,115 +187,90 @@
     // =========================================================================
     // DATABASE BANK SOAL ACAK (CONDITIONAL RANDOMIZER)
     // Setiap Indikator Kisi-kisi berupa Array [] yang berisi variasi soal.
-    // Sistem akan memilih 1 soal secara acak dari setiap Array Indikator.
     // =========================================================================
     const bankSoal = {
       matematika: [
-        // Indikator 1: Menentukan nilai tempat
         [
           { id: 'm1_v1', type: 'mcq', question: 'Angka 4 pada bilangan berikut menempati nilai tempat...', illustration: '[ 48 ]', options: ['Ratusan', 'Puluhan', 'Satuan'], answer: 1, explanation: 'Angka 4 bernilai 40 (Puluhan), dan angka 8 bernilai Satuan.' },
           { id: 'm1_v2', type: 'mcq', question: 'Angka 7 pada bilangan berikut menempati nilai tempat...', illustration: '[ 75 ]', options: ['Ratusan', 'Puluhan', 'Satuan'], answer: 1, explanation: 'Angka 7 bernilai 70 (Puluhan), dan angka 5 bernilai Satuan.' }
         ],
-        // Indikator 2: Mengurutkan bilangan cacah terkecil-terbesar
         [
           { id: 'm2_v1', type: 'mcq', question: 'Urutkan bilangan di bawah ini dari yang paling kecil ke yang paling besar: 35, 12, 28, 19', options: ['12, 19, 28, 35', '12, 28, 19, 35', '35, 28, 19, 12'], answer: 0, explanation: 'Urutan dari terkecil: 12, 19, 28, lalu 35.' },
           { id: 'm2_v2', type: 'mcq', question: 'Urutkan bilangan di bawah ini dari yang nilainya paling kecil: 41, 22, 15, 30', options: ['41, 30, 22, 15', '15, 22, 30, 41', '15, 30, 22, 41'], answer: 1, explanation: 'Urutan dari terkecil: 15, 22, 30, lalu 41.' }
         ],
-        // Indikator 3: Masalah sehari-hari penjumlahan
         [
           { id: 'm3_v1', type: 'mcq', question: 'Budi memiliki 15 butir kelereng. Ayah membelikan lagi 12 butir kelereng. Berapa jumlah kelereng Budi seluruhnya sekarang?', options: ['25 butir', '27 butir', '30 butir'], answer: 1, explanation: '15 + 12 = 27 butir.' },
           { id: 'm3_v2', type: 'mcq', question: 'Siti membeli 20 buah jeruk. Kemudian paman memberinya 14 buah jeruk lagi. Jumlah jeruk Siti seluruhnya adalah...', options: ['34 buah', '30 buah', '44 buah'], answer: 0, explanation: '20 + 14 = 34 buah.' }
         ],
-        // Indikator 4: Pengurangan
         [
           { id: 'm4_v1', type: 'mcq', question: 'Ibu membawa 24 buah apel dari pasar. Sesampainya di rumah, 5 apel ternyata busuk. Berapa sisa buah apel yang bagus?', options: ['19 buah', '20 buah', '29 buah'], answer: 0, explanation: '24 - 5 = 19 buah apel.' },
           { id: 'm4_v2', type: 'mcq', question: 'Andi memiliki 30 lembar kartu. Sebanyak 8 lembar hilang saat bermain. Sisa kartu Andi adalah...', options: ['38 lembar', '22 lembar', '20 lembar'], answer: 1, explanation: '30 - 8 = 22 lembar.' }
         ],
-        // Indikator 5: Konsep kesamaan (Gambar/Ilustrasi)
         [
           { id: 'm5_v1', type: 'mcq', question: 'Kelompok A ada 4 apel merah dan 3 apel hijau. Kelompok B ada 5 apel merah dan 2 apel hijau. Bentuk kesamaan matematikanya adalah...', options: ['4 + 3 = 5 + 2', '4 + 5 = 3 + 2', '4 - 3 = 5 - 2'], answer: 0, explanation: 'Kedua kelompok sama-sama berjumlah 7.' },
           { id: 'm5_v2', type: 'mcq', question: 'Keranjang kiri berisi 6 telur ayam dan 2 telur bebek. Keranjang kanan berisi 5 telur ayam dan 3 telur bebek. Bentuk kesamaannya adalah...', options: ['6 + 3 = 5 + 2', '6 + 2 = 5 + 3', '6 - 2 = 5 - 3'], answer: 1, explanation: 'Keduanya berjumlah 8 (6+2 = 8 dan 5+3 = 8).' }
         ],
-        // Indikator 6: Simbol = Penjumlahan setara
         [
           { id: 'm6_v1', type: 'mcq', question: 'Sisi kiri ada 5 balok merah dan 4 balok biru. Sisi kanan ada 6 balok kuning dan 3 balok hijau. Bentuk kesamaan penjumlahan yang setara adalah...', options: ['5 + 6 = 4 + 3', '5 + 4 = 6 + 3', '5 + 3 = 6 + 4'], answer: 1, explanation: '5 + 4 = 9 dan 6 + 3 = 9.' },
           { id: 'm6_v2', type: 'mcq', question: 'Sebelah kiri ada 7 buku tebal dan 3 buku tipis. Sebelah kanan ada 8 majalah dan 2 koran. Bentuk kesamaan penjumlahannya adalah...', options: ['7 + 3 = 8 + 2', '7 + 2 = 8 + 3', '7 - 3 = 8 - 2'], answer: 0, explanation: '7 + 3 = 10 dan 8 + 2 = 10.' }
         ],
-        // Indikator 7: Kalimat matematika pengurangan ilustrasi
         [
           { id: 'm7_v1', type: 'mcq', question: 'Ada 12 pensil lalu dicoret 4. Di sebelahnya ada 10 pensil lalu dicoret 2. Kalimat kesamaan pengurangannya adalah...', options: ['12 - 4 = 10 - 2', '12 - 2 = 10 - 4', '12 + 4 = 10 + 2'], answer: 0, explanation: '12 - 4 = 8, dan 10 - 2 = 8.' },
           { id: 'm7_v2', type: 'mcq', question: 'Terdapat 15 gelas lalu 5 pecah. Di sebelahnya 14 piring lalu 4 pecah. Kalimat kesamaan pengurangannya adalah...', options: ['15 - 5 = 14 - 4', '15 - 4 = 14 - 5', '15 + 5 = 14 + 4'], answer: 0, explanation: '15 - 5 = 10, dan 14 - 4 = 10.' }
         ],
-        // Indikator 8: Cerita kesamaan pengurangan
         [
           { id: 'm8_v1', type: 'mcq', question: 'Andi memakan 4 dari 15 permennya. Doni memakan 3 dari 14 permennya. Sisa permen mereka sama. Bentuk kesamaannya...', options: ['15 - 4 = 14 - 3', '15 - 3 = 14 - 4', '15 + 4 = 14 + 3'], answer: 0, explanation: '15 - 4 = 11 dan 14 - 3 = 11.' },
           { id: 'm8_v2', type: 'mcq', question: 'Rina punya 20 stiker, lalu diberikan ke adiknya 5. Siti punya 18 stiker, diberikan ke temannya 3. Sisa mereka sama. Bentuk kesamaannya...', options: ['20 - 3 = 18 - 5', '20 - 5 = 18 - 3', '20 + 5 = 18 + 3'], answer: 1, explanation: '20 - 5 = 15 dan 18 - 3 = 15.' }
         ],
-        // Indikator 9: Pengukuran berat tidak baku (timbangan)
         [
           { id: 'm9_v1', type: 'mcq', question: 'Berat 1 buku setara dengan 8 butir kelereng. Agar timbangan seimbang, jumlah kelereng untuk 1 buku adalah...', options: ['6 kelereng', '8 kelereng', '10 kelereng'], answer: 1, explanation: 'Timbangan seimbang jika diletakkan 8 kelereng.' },
           { id: 'm9_v2', type: 'mcq', question: 'Berat 1 kotak pensil setara dengan 12 butir kelereng. Agar seimbang, jumlah kelereng yang dibutuhkan adalah...', options: ['10 kelereng', '12 kelereng', '14 kelereng'], answer: 1, explanation: 'Dibutuhkan persis 12 kelereng agar seimbang.' }
         ],
-        // Indikator 10: Perbandingan berat
         [
           { id: 'm10_v1', type: 'mcq', question: 'Berat Semangka 3 kg, berat Melon 2 kg. Pernyataan yang tepat adalah...', options: ['Semangka lebih ringan dari melon', 'Semangka sama berat dengan melon', 'Semangka lebih berat dari melon'], answer: 2, explanation: '3 kg lebih berat dari 2 kg.' },
           { id: 'm10_v2', type: 'mcq', question: 'Berat Beras 5 kg, berat Gula 5 kg. Pernyataan yang tepat adalah...', options: ['Beras lebih berat dari gula', 'Beras lebih ringan dari gula', 'Beras sama berat dengan gula'], answer: 2, explanation: 'Kedua benda memiliki berat yang sama yaitu 5 kg.' }
         ],
-        // Indikator 11: Deret bilangan cacah (Isian)
         [
           { id: 'm11_v1', type: 'fill', question: 'Lengkapi deret bilangan loncat lima berikut: 10, 15, ..., 25, ... (Tulis dipisah koma)', acceptedAnswers: ['20, 30', '20,30', '20 dan 30'], displayAnswer: '20, 30', explanation: 'Pola selalu bertambah 5 (+5).' },
           { id: 'm11_v2', type: 'fill', question: 'Lengkapi deret bilangan loncat dua berikut: 4, 6, ..., 10, ... (Tulis dipisah koma)', acceptedAnswers: ['8, 12', '8,12', '8 dan 12'], displayAnswer: '8, 12', explanation: 'Pola selalu bertambah 2 (+2).' }
         ],
-        // Indikator 12: Pengurangan cerita (Isian)
         [
           { id: 'm12_v1', type: 'fill', question: 'Rina punya 35 lembar kertas. Dipakai 14 lembar. Sisa kertas Rina sekarang adalah ... lembar.', acceptedAnswers: ['21', '21 lembar'], displayAnswer: '21', explanation: '35 - 14 = 21.' },
           { id: 'm12_v2', type: 'fill', question: 'Doni punya 40 butir kelereng. Hilang 12 butir di lapangan. Sisa kelereng Doni adalah ... butir.', acceptedAnswers: ['28', '28 butir'], displayAnswer: '28', explanation: '40 - 12 = 28.' }
         ],
-        // Indikator 13: Menyeimbangkan penjumlahan
         [
           { id: 'm13_v1', type: 'fill', question: 'Tentukan angka yang tepat: 8 + 4 = 10 + ...', acceptedAnswers: ['2'], displayAnswer: '2', explanation: '8 + 4 = 12, jadi 10 + 2 = 12.' },
           { id: 'm13_v2', type: 'fill', question: 'Tentukan angka yang tepat: 7 + 5 = 9 + ...', acceptedAnswers: ['3'], displayAnswer: '3', explanation: '7 + 5 = 12, jadi 9 + 3 = 12.' }
         ],
-        // Indikator 14: Menyeimbangkan pengurangan
         [
           { id: 'm14_v1', type: 'fill', question: 'Tentukan angka yang tepat: 15 - 5 = 13 - ...', acceptedAnswers: ['3'], displayAnswer: '3', explanation: '15 - 5 = 10, jadi 13 - 3 = 10.' },
           { id: 'm14_v2', type: 'fill', question: 'Tentukan angka yang tepat: 20 - 10 = 16 - ...', acceptedAnswers: ['6'], displayAnswer: '6', explanation: '20 - 10 = 10, jadi 16 - 6 = 10.' }
         ],
-        // Indikator 15: Konversi berat
         [
           { id: 'm15_v1', type: 'fill', question: 'Jika 1 mangga seimbang dengan 5 apel, maka 2 mangga seimbang dengan ... apel.', acceptedAnswers: ['10', '10 apel'], displayAnswer: '10', explanation: '5 + 5 = 10 apel.' },
           { id: 'm15_v2', type: 'fill', question: 'Jika 1 pepaya seimbang dengan 4 jeruk, maka 3 pepaya seimbang dengan ... jeruk.', acceptedAnswers: ['12', '12 jeruk'], displayAnswer: '12', explanation: '4 + 4 + 4 = 12 jeruk.' }
         ],
-        // Indikator 16: Uraian Mengurutkan Kuantitas
         [
           { id: 'm16_v1', type: 'essay', question: 'Tino (12 kelereng), Rio (25 kelereng), Bima (18 kelereng). Urutkan dari kelereng paling sedikit!', displayAnswer: 'Tino, Bima, Rio', explanation: '12 (Tino), 18 (Bima), 25 (Rio).' },
           { id: 'm16_v2', type: 'essay', question: 'Ani (30 buku), Siti (15 buku), Desi (22 buku). Urutkan nama anak dari buku paling sedikit!', displayAnswer: 'Siti, Desi, Ani', explanation: '15 (Siti), 22 (Desi), 30 (Ani).' }
         ],
-        // Indikator 17: Uraian Operasi Hitung Campuran
         [
           { id: 'm17_v1', type: 'essay', question: 'Paman punya 40 telur, pecah 6, lalu ditambah 10 butir lagi. Berapa jumlah telur sekarang?', displayAnswer: '40 - 6 + 10 = 44 butir', explanation: '40 - 6 = 34. Lalu 34 + 10 = 44.' },
           { id: 'm17_v2', type: 'essay', question: 'Ibu membeli 50 permen, dibagikan ke adik 15 permen, lalu ayah membelikan lagi 20 permen. Berapa permen sekarang?', displayAnswer: '50 - 15 + 20 = 55 permen', explanation: '50 - 15 = 35. Lalu 35 + 20 = 55.' }
         ],
-        // Indikator 18: Uraian Pemodelan Kesamaan
         [
           { id: 'm18_v1', type: 'essay', question: 'Kelompok A ada 6 bola merah, 3 biru. Kelompok B ada 5 kuning, 4 hijau. Tulis kalimat kesamaan penjumlahannya!', displayAnswer: '6 + 3 = 5 + 4', explanation: 'Kedua sisi berjumlah 9.' },
           { id: 'm18_v2', type: 'essay', question: 'Kotak Kiri ada 8 pensil hitam dan 4 pensil warna. Kotak Kanan ada 7 pensil hitam dan 5 pensil warna. Tulis kalimat kesamaannya!', displayAnswer: '8 + 4 = 7 + 5', explanation: 'Kedua sisi berjumlah 12.' }
         ],
-        // Indikator 19: Uraian Bukti Kesamaan
         [
           { id: 'm19_v1', type: 'essay', question: 'Buktikan dengan berhitung bahwa (20 - 8) bernilai sama dengan (15 - 3)!', displayAnswer: '20 - 8 = 12 dan 15 - 3 = 12. Nilainya sama.', explanation: 'Keduanya menghasilkan angka 12.' },
           { id: 'm19_v2', type: 'essay', question: 'Buktikan dengan berhitung bahwa (25 - 10) bernilai sama dengan (30 - 15)!', displayAnswer: '25 - 10 = 15 dan 30 - 15 = 15. Keduanya sama.', explanation: 'Keduanya menghasilkan angka 15.' }
         ],
-        // Indikator 20: Uraian Analisis Data Timbangan
         [
           { id: 'm20_v1', type: 'essay', question: 'Mobil(15 kelereng), Robot(20 kelereng), Boneka(12 kelereng). Urutkan dari yang paling ringan!', displayAnswer: 'Boneka, Mobil, Robot', explanation: 'Boneka(12) < Mobil(15) < Robot(20).' },
           { id: 'm20_v2', type: 'essay', question: 'Buku(10 kelereng), Tas(35 kelereng), Sepatu(25 kelereng). Urutkan benda dari yang paling berat!', displayAnswer: 'Tas, Sepatu, Buku', explanation: 'Tas(35) > Sepatu(25) > Buku(10).' }
         ]
       ],
-
-      // CONTOH: STRUKTUR MAPEL LAIN
-      // Untuk mapel lain, saya buatkan 1 variasi (Array berisi 1 Object).
-      // Nanti Anda tinggal copy-paste Object { ... } ke dalam Array yang sama untuk menambah variasinya!
       bahasaindonesia: [
         [{ id: 'bi1', type: 'mcq', question: 'Perhatikan gambar seorang anak yang sedang mengerutkan dahi dan mengepalkan tangan! Nama perasaan yang sedang dialaminya adalah...', illustration: '😡', options: ['Marah', 'Senang', 'Sedih'], answer: 0, explanation: 'Ekspresi tersebut menandakan marah.' }],
         [{ id: 'bi2', type: 'mcq', question: 'Cerita: "Budi dan Andi berebut mobil-mobilan. Mobil itu rusak sehingga Andi menangis." Tokoh yang merasa sedih dan menangis adalah...', options: ['Budi', 'Andi', 'Ibu'], answer: 1, explanation: 'Andi yang menangis.' }],
@@ -395,6 +378,33 @@
         [{ id: 'pa23', type: 'essay', question: 'Sebutkan 1 contoh meneladani Ar-Rahman di rumah!', displayAnswer: 'Menyayangi hewan peliharaan atau berbagi makanan.', explanation: 'Kasih semua makhluk.' }],
         [{ id: 'pa24', type: 'essay', question: 'Berdasarkan As-Salam, mengapa tidak boleh bertengkar?', displayAnswer: 'Karena bertengkar merusak kedamaian.', explanation: 'Tujuan As-Salam.' }],
         [{ id: 'pa25', type: 'essay', question: 'Tindakan di kelas agar suasana aman sesuai Al-Mukmin?', displayAnswer: 'Tidak mengganggu teman yang belajar.', explanation: 'Memberi rasa aman.' }]
+      ],
+      bahasajawa: [
+        [{ id: 'bj1', type: 'mcq', question: 'Urutna aksara (huruf) iki supaya dadi tembung sing bener: u - g - u - r', options: ['Turu', 'Guru', 'Buku'], answer: 1, explanation: 'Aksara u-g-u-r menawa diurutake dadi tembung Guru.' }],
+        [{ id: 'bj2', type: 'mcq', question: 'Saben esuk Bima mangkat sekolah nggawa tas. Apa pigunane (gunane) tas kasebut?', options: ['Kanggo wadah buku lan piranti nulis', 'Kanggo dolanan ing kelas', 'Kanggo wadhah banyu'], answer: 0, explanation: 'Tas gunane kanggo wadhah buku lan piranti sekolah liyane.' }],
+        [{ id: 'bj3', type: 'mcq', question: 'Jangkepana aksara sing ilang ing tembung iki: m - ... - j - a', options: ['a', 'i', 'e'], answer: 2, explanation: 'Aksara sing bener yaiku e, dadi tembung Meja.' }],
+        [{ id: 'bj4', type: 'mcq', question: 'Lagu utawa tembang "Menthog-Menthog" iku kalebu jinise tembang...', options: ['Campursari', 'Dolanan', 'Macapat'], answer: 1, explanation: 'Menthog-menthog iku tembang dolanan kanggo bocah-bocah.' }],
+        [{ id: 'bj5', type: 'mcq', question: 'Tiruan swarane tumpakan sepur (kereta api) nalika mlaku yaiku...', options: ['Ngiung-ngiung', 'Brem-brem', 'Jes-jes tut-tut'], answer: 2, explanation: 'Swarane sepur yaiku jes-jes-jes tut-tut.' }],
+        [{ id: 'bj6', type: 'mcq', question: 'Manuk iku seneng mabur. Ejaan sing bener kanggo nulis tembung manuk merpati ing basa Jawa yaiku...', options: ['Doro', 'Dara', 'Dora'], answer: 1, explanation: 'Panulisan ejaan baku basa Jawa yaiku Dara (diwaca doro).' }],
+        [{ id: 'bj7', type: 'mcq', question: 'Ing jero kelas ana kapur putih. Apa pigunane utama saka kapur?', options: ['Kanggo nulis ing blabak (papan tulis)', 'Kanggo mbusak tulisan', 'Kanggo dolanan'], answer: 0, explanation: 'Kapur iku piranti kanggo nulis ing blabak.' }],
+        [{ id: 'bj8', type: 'mcq', question: 'Piranti sing digunakake murid-murid kanggo njaga karesikan jogan (lantai) kelas yaiku...', options: ['Sapu', 'Kapur', 'Gunting'], answer: 0, explanation: 'Sapu digunakake kanggo nyapu njaga karesikan kelas.' }],
+        [{ id: 'bj9', type: 'mcq', question: 'Tatanen tembung-tembung iki dadi ukara sing bener: maca - Bima - buku', options: ['Maca Bima buku', 'Bima maca buku', 'Buku Bima maca'], answer: 1, explanation: 'Urutan ukara sing bener yaiku Bima maca buku.' }],
+        [{ id: 'bj10', type: 'mcq', question: 'Simbah lungguh ing lincak. Tembung krama saka "lungguh" yaiku...', options: ['Turu', 'Mlaku', 'Lenggah'], answer: 2, explanation: 'Tembung krama saka lungguh yaiku lenggah.' }],
+        [{ id: 'bj11', type: 'fill', question: 'Krik krik krik... iku tiruan swara kewan...', acceptedAnswers: ['jangkrik'], displayAnswer: 'Jangkrik', explanation: 'Krik-krik iku swarane kewan jangkrik.' }],
+        [{ id: 'bj12', type: 'fill', question: 'Yen bal ditendhang utawa dipancal kanthi seru bakal muni...', acceptedAnswers: ['buk', 'jebug', 'bluk', 'bug'], displayAnswer: 'Buk / Bug', explanation: 'Swara bal ditendhang muni buk utawa bug.' }],
+        [{ id: 'bj13', type: 'fill', question: 'Jangkepana wanda (suku kata) sing ilang iki: se - pa - ...', acceptedAnswers: ['tu'], displayAnswer: 'tu (Sepatu)', explanation: 'Yen digabung dadi tembung Sepatu.' }],
+        [{ id: 'bj14', type: 'fill', question: 'Kewan menthog yen mlaku lakune...', acceptedAnswers: ['megal-megol', 'megal megol'], displayAnswer: 'Megal-megol', explanation: 'Ciri khas lakune menthog yaiku megal-megol.' }],
+        [{ id: 'bj15', type: 'fill', question: 'Tatanen dadi ukara ngoko sing bener: Aku - adus - lagi', acceptedAnswers: ['aku lagi adus'], displayAnswer: 'Aku lagi adus', explanation: 'Urutane yaiku Subjek (Aku) - Katerangan (lagi) - Wasesa (adus).' }],
+        [{ id: 'bj16', type: 'fill', question: 'Urutna aksara acak iki dadi jeneng piranti nulis: u - k - u - b', acceptedAnswers: ['buku'], displayAnswer: 'Buku', explanation: 'Yen diurutake dadi tembung BUKU.' }],
+        [{ id: 'bj17', type: 'fill', question: 'Bocah-bocah padha dolanan bal-balan ana ing...', acceptedAnswers: ['lapangan', 'latar'], displayAnswer: 'Lapangan', explanation: 'Bal-balan biyasane ditindakake ing lapangan.' }],
+        [{ id: 'bj18', type: 'fill', question: 'Sikilku papat. Aku seneng mangan iwak. Swaraku meong. Aku yaiku...', acceptedAnswers: ['kucing'], displayAnswer: 'Kucing', explanation: 'Kewan sing swarane meong yaiku kucing.' }],
+        [{ id: 'bj19', type: 'fill', question: 'Tatanen wanda (suku kata) iki: ga - an - ris. Dadi piranti kanggo nggambar garis yaiku...', acceptedAnswers: ['garisan', 'penggaris'], displayAnswer: 'Garisan', explanation: 'Urutan wanda sing bener dadi Garisan.' }],
+        [{ id: 'bj20', type: 'fill', question: 'Piranti sing wujude lembaran kertas lan pigunane kanggo nulis pelajaran diarani buku...', acceptedAnswers: ['tulis'], displayAnswer: 'Tulis', explanation: 'Buku sing dinggo nulis diarani buku tulis.' }],
+        [{ id: 'bj21', type: 'essay', question: 'Wacanen: "Esuk-esuk Bima sregep nyapu latar supaya resik." Sapa tokoh utama ing ukara kasebut?', displayAnswer: 'Bima.', explanation: 'Sing dicritakake sregep nyapu latar yaiku Bima.' }],
+        [{ id: 'bj22', type: 'essay', question: 'Kepiye carane njaga karesikan lingkungan omah lan kelas?', displayAnswer: 'Kanthi cara disapu, dipel, lan mbuwang sampah ing panggonane.', explanation: 'Njaga karesikan bisa kanthi nyapu lan mbuwang sampah ing panggone.' }],
+        [{ id: 'bj23', type: 'essay', question: 'Aku wujud barang mebel ing omah. Gunaku kanggo lungguh tamu. Aku yaiku...', displayAnswer: 'Kursi.', explanation: 'Barang kanggo lungguh yaiku kursi.' }],
+        [{ id: 'bj24', type: 'essay', question: 'Tatanen tembung iki dadi ukara krama sing leres: Ibu - kondur - dereng', displayAnswer: 'Ibu dereng kondur.', explanation: 'Urutane yaiku Ibu (Subjek) dereng (Katerangan) kondur (Wasesa/Kata kerja).' }],
+        [{ id: 'bj25', type: 'essay', question: 'Saben mangkat sekolah, tas sing isi buku iku dipapanake utawa digawa ing ngendi?', displayAnswer: 'Digendhong ing geger utawa dislempangake ing pundhak.', explanation: 'Tas sekolah lumrahe digendhong ing geger.' }]
       ]
     };
 
@@ -402,7 +412,7 @@
     // APPLICATION STATE & LOGIC
     // =========================================================================
     let currentSubject = '';
-    let currentQuizSession = []; // Soal hasil acakan (1 soal per indikator)
+    let currentQuizSession = []; 
     let currentIndex = 0;
     let userAnswers = {};
     let studentName = '';
@@ -419,8 +429,22 @@
     function selectSubject(sub) {
       currentSubject = sub;
       
-      const titleMap = { matematika: 'Matematika', bahasaindonesia: 'Bahasa Indonesia', pkn: 'Pend. Pancasila', pjok: 'PJOK', pabp: 'PABP' };
-      const iconMap = { matematika: '🧮', bahasaindonesia: '📖', pkn: '🤝', pjok: '🏃', pabp: '🕌' };
+      const titleMap = { 
+        matematika: 'Matematika', 
+        bahasaindonesia: 'B. Indonesia', 
+        bahasajawa: 'Bahasa Jawa', 
+        pkn: 'Pend. Pancasila', 
+        pjok: 'PJOK', 
+        pabp: 'PABP' 
+      };
+      const iconMap = { 
+        matematika: '🧮', 
+        bahasaindonesia: '📖', 
+        bahasajawa: '🎭', 
+        pkn: '🤝', 
+        pjok: '🏃', 
+        pabp: '🕌' 
+      };
       
       document.getElementById('start-icon').textContent = iconMap[sub];
       document.getElementById('start-title').textContent = `Kuis ${titleMap[sub]}`;
@@ -437,12 +461,10 @@
       userAnswers = {};
       currentIndex = 0;
 
-      // RANDOMIZER LOGIC: Ambil 1 soal acak dari tiap kantong indikator
       const subjectData = bankSoal[currentSubject];
       currentQuizSession = subjectData.map((indicatorVariations, index) => {
         const randomVarIndex = Math.floor(Math.random() * indicatorVariations.length);
         const selectedQuestion = indicatorVariations[randomVarIndex];
-        // Simpan nomor asli indikator agar urutan/identifikasi tetap jelas
         return { ...selectedQuestion, originalIndex: index };
       });
 
