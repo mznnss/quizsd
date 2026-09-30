@@ -97,6 +97,31 @@
       </div>
     </div>
 
+    <!-- Screen 2.5: Select Category (Khusus Mapel dengan Kategori spt Seni Rupa) -->
+    <div id="screen-select-category" class="hidden max-w-2xl mx-auto w-full space-y-6 text-center">
+      <div class="mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-heading">Pilih Kategori <span id="cat-subject-name"></span></h2>
+        <p class="text-slate-600 text-sm mt-2">Pilih kategori soal yang ingin kamu kerjakan hari ini.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <button onclick="selectCategory('senirupa1', 'Seni Rupa (Kategori 1)')" class="btn-bounce bg-white p-8 rounded-3xl border-4 border-fuchsia-200 shadow-xl flex flex-col items-center justify-center gap-3 hover:border-fuchsia-400 group">
+          <div class="w-16 h-16 bg-fuchsia-100 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🎨</div>
+          <h3 class="text-xl font-bold text-slate-800 font-heading">Kategori 1</h3>
+          <p class="text-[11px] font-semibold text-fuchsia-600 bg-fuchsia-50 px-3 py-1 rounded-full">25 Soal Acak</p>
+        </button>
+        <button onclick="selectCategory('senirupa2', 'Seni Rupa (Kategori 2)')" class="btn-bounce bg-white p-8 rounded-3xl border-4 border-purple-200 shadow-xl flex flex-col items-center justify-center gap-3 hover:border-purple-400 group">
+          <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🖌️</div>
+          <h3 class="text-xl font-bold text-slate-800 font-heading">Kategori 2</h3>
+          <p class="text-[11px] font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">25 Soal Acak</p>
+        </button>
+      </div>
+      <div class="text-center pt-6">
+        <button onclick="backToSubjectsFromCategory()" class="text-sm font-bold text-slate-400 hover:text-slate-600 underline flex items-center justify-center gap-1 mx-auto">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali pilih pelajaran
+        </button>
+      </div>
+    </div>
+
     <!-- Screen 3: Start Screen (Name Input) -->
     <div id="screen-start" class="hidden bg-white rounded-3xl p-6 md:p-10 border-4 border-indigo-200 shadow-xl text-center space-y-6 max-w-2xl mx-auto w-full">
       <div class="inline-block p-4 bg-indigo-100 rounded-full text-5xl mb-2 animate-bounce" id="start-icon">📝</div>
@@ -187,7 +212,7 @@
 
   <script>
     // =========================================================================
-    // DATABASE BANK SOAL 
+    // DATABASE BANK SOAL (MATEMATIKA, B.INDO, PKN, PJOK, PABP, B.JAWA, S.RUPA)
     // =========================================================================
     const bankSoal = {
       matematika: [
@@ -470,6 +495,7 @@
     // =========================================================================
     let currentClassLevel = 0; 
     let currentSubject = '';
+    let currentParentSubjectIcon = '';
     let currentQuizSession = []; 
     let currentIndex = 0;
     let userAnswers = {};
@@ -478,16 +504,15 @@
     // Data UI Mapel berdasarkan kelas
     const subjectUIData = {
       1: [
-        { id: 'bahasajawa', name: 'Bahasa Jawa', icon: '🎭', color: 'orange' }
+        { id: 'bahasajawa', name: 'Bahasa Jawa', icon: '🎭', color: 'orange', hasCategories: false }
       ],
       2: [
-        { id: 'matematika', name: 'Matematika', icon: '🧮', color: 'amber' },
-        { id: 'bahasaindonesia', name: 'B. Indonesia', icon: '📖', color: 'teal' },
-        { id: 'pkn', name: 'Pend. Pancasila', icon: '🤝', color: 'rose' },
-        { id: 'pjok', name: 'PJOK', icon: '🏃', color: 'emerald' },
-        { id: 'pabp', name: 'PABP', icon: '🕌', color: 'sky' },
-        { id: 'senirupa1', name: 'Seni Rupa (Kat. 1)', icon: '🎨', color: 'fuchsia' },
-        { id: 'senirupa2', name: 'Seni Rupa (Kat. 2)', icon: '🖌️', color: 'purple' }
+        { id: 'matematika', name: 'Matematika', icon: '🧮', color: 'amber', hasCategories: false },
+        { id: 'bahasaindonesia', name: 'B. Indonesia', icon: '📖', color: 'teal', hasCategories: false },
+        { id: 'pkn', name: 'Pend. Pancasila', icon: '🤝', color: 'rose', hasCategories: false },
+        { id: 'pjok', name: 'PJOK', icon: '🏃', color: 'emerald', hasCategories: false },
+        { id: 'pabp', name: 'PABP', icon: '🕌', color: 'sky', hasCategories: false },
+        { id: 'senirupa', name: 'Seni Rupa', icon: '🎨', color: 'fuchsia', hasCategories: true }
       ]
     };
 
@@ -495,6 +520,7 @@
     const sSelectClass = document.getElementById('screen-select-class');
     const sPassword = document.getElementById('screen-password');
     const sSelectSubject = document.getElementById('screen-select-subject');
+    const sSelectCategory = document.getElementById('screen-select-category');
     const sStart = document.getElementById('screen-start');
     const sQuiz = document.getElementById('screen-quiz');
     const sResult = document.getElementById('screen-result');
@@ -553,24 +579,23 @@
           'rose': 'border-rose-200 hover:border-rose-400',
           'emerald': 'border-emerald-200 hover:border-emerald-400',
           'sky': 'border-sky-200 hover:border-sky-400',
-          'fuchsia': 'border-fuchsia-200 hover:border-fuchsia-400',
-          'purple': 'border-purple-200 hover:border-purple-400'
+          'fuchsia': 'border-fuchsia-200 hover:border-fuchsia-400'
         };
         const bgColors = {
           'orange': 'bg-orange-100', 'amber': 'bg-amber-100', 'teal': 'bg-teal-100',
           'rose': 'bg-rose-100', 'emerald': 'bg-emerald-100', 'sky': 'bg-sky-100',
-          'fuchsia': 'bg-fuchsia-100', 'purple': 'bg-purple-100'
+          'fuchsia': 'bg-fuchsia-100'
         };
 
         const btn = document.createElement('button');
-        btn.onclick = () => selectSubject(subj.id, subj.name, subj.icon);
+        btn.onclick = () => selectSubject(subj.id, subj.name, subj.icon, subj.hasCategories);
         btn.className = `btn-bounce bg-white p-6 rounded-3xl border-4 ${borderColors[subj.color]} shadow-lg text-left flex items-center gap-4 group`;
         
         btn.innerHTML = `
           <div class="w-16 h-16 ${bgColors[subj.color]} rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition-transform">${subj.icon}</div>
           <div>
             <h3 class="text-lg font-bold text-slate-800 font-heading leading-tight">${subj.name}</h3>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">Soal Acak Otomatis</p>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">${subj.hasCategories ? 'Pilih Kategori' : 'Soal Acak Otomatis'}</p>
           </div>
         `;
         container.appendChild(btn);
@@ -578,9 +603,18 @@
     }
 
     // 5. Pilih mapel
-    function selectSubject(subId, subName, subIcon) {
+    function selectSubject(subId, subName, subIcon, hasCategories) {
+      if (hasCategories) {
+        // Tampilkan layar pilih Kategori
+        currentParentSubjectIcon = subIcon;
+        document.getElementById('cat-subject-name').textContent = subName;
+        sSelectSubject.classList.add('hidden');
+        sSelectCategory.classList.remove('hidden');
+        return;
+      }
+
+      // Mapel biasa (tanpa kategori)
       currentSubject = subId;
-      
       document.getElementById('start-icon').textContent = subIcon;
       document.getElementById('start-title').textContent = `Kuis ${subName}`;
       document.getElementById('badge-subject-name').textContent = subName;
@@ -594,11 +628,40 @@
       sStart.classList.remove('hidden');
     }
 
+    // 5.b. Pilih Kategori Khusus
+    function selectCategory(catId, catName) {
+      currentSubject = catId; // Set subject ID sesuai kategori ('senirupa1' atau 'senirupa2')
+      
+      document.getElementById('start-icon').textContent = currentParentSubjectIcon;
+      document.getElementById('start-title').textContent = `Kuis ${catName}`;
+      document.getElementById('badge-subject-name').textContent = catName;
+      
+      document.getElementById('active-subject-badge').classList.remove('hidden');
+      document.getElementById('active-subject-badge').classList.add('flex');
+
+      document.getElementById('student-name').value = '';
+      
+      sSelectCategory.classList.add('hidden');
+      sStart.classList.remove('hidden');
+    }
+
+    // 5.c. Kembali dari layar kategori
+    function backToSubjectsFromCategory() {
+      sSelectCategory.classList.add('hidden');
+      sSelectSubject.classList.remove('hidden');
+    }
+
     function backToSubjects() {
       sStart.classList.add('hidden');
       document.getElementById('active-subject-badge').classList.add('hidden');
       document.getElementById('active-subject-badge').classList.remove('flex');
-      sSelectSubject.classList.remove('hidden');
+      
+      // Jika yang dibatalkan adalah mapel dengan sub-kategori, kembalikan ke layar kategori
+      if (currentSubject.startsWith('senirupa')) {
+        sSelectCategory.classList.remove('hidden');
+      } else {
+        sSelectSubject.classList.remove('hidden');
+      }
     }
 
     // 6. Mulai kuis
@@ -654,7 +717,8 @@
       ansCont.innerHTML = '';
       
       if (q.type === 'mcq') {
-        const labels = ['A', 'B', 'C', 'D']; // Updated untuk 4 opsi Seni Rupa
+        // Tentukan jumlah opsi jawaban yang ada (bisa 3 atau 4)
+        const labels = ['A', 'B', 'C', 'D'];
         q.options.forEach((opt, idx) => {
           const isSel = userAnswers[q.id] === idx;
           ansCont.innerHTML += `
@@ -765,6 +829,7 @@
       
       sPassword.classList.add('hidden');
       sSelectSubject.classList.add('hidden');
+      sSelectCategory.classList.add('hidden');
       sStart.classList.add('hidden'); 
       sQuiz.classList.add('hidden'); 
       sResult.classList.add('hidden'); 
