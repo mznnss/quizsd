@@ -187,7 +187,7 @@
 
   <script>
     // =========================================================================
-    // DATABASE BANK SOAL (MATEMATIKA, B.INDO, PKN, PJOK, PABP, B.JAWA)
+    // DATABASE BANK SOAL 
     // =========================================================================
     const bankSoal = {
       matematika: [
@@ -406,13 +406,69 @@
         [{ id: 'bj23', type: 'essay', question: 'Aku wujud barang mebel ing omah. Gunaku kanggo lungguh tamu. Aku yaiku...', displayAnswer: 'Kursi.', explanation: 'Barang kanggo lungguh yaiku kursi.' }],
         [{ id: 'bj24', type: 'essay', question: 'Tatanen tembung iki dadi ukara krama sing leres: Ibu - kondur - dereng', displayAnswer: 'Ibu dereng kondur.', explanation: 'Urutane yaiku Ibu (Subjek) dereng (Katerangan) kondur (Wasesa/Kata kerja).' }],
         [{ id: 'bj25', type: 'essay', question: 'Saben mangkat sekolah, tas sing isi buku iku dipapanake utawa digawa ing ngendi?', displayAnswer: 'Digendhong ing geger utawa dislempangake ing pundhak.', explanation: 'Tas sekolah lumrahe digendhong ing geger.' }]
+      ],
+      // SENI RUPA KATEGORI 1
+      senirupa1: [
+        [{ id: 'sr1_1', type: 'mcq', question: 'Garis adalah unsur seni rupa yang terbentuk dari deretan titik yang saling berhubungan. Apakah arti dari garis tersebut?', options: ['Titik yang membesar', 'Goresan memanjang yang memiliki arah', 'Bidang yang memiliki warna', 'Tekstur yang kasar'], answer: 1, explanation: 'Garis merupakan hasil dari goresan yang memanjang.' }],
+        [{ id: 'sr1_2', type: 'mcq', question: 'Perhatikan gambar garis ini: ~ (garis berombak naik turun). Jenis garis tersebut adalah...', options: ['Garis lurus', 'Garis zigzag', 'Garis lengkung / bergelombang', 'Garis putus-putus'], answer: 2, explanation: 'Garis yang naik turun melengkung disebut garis bergelombang.' }],
+        [{ id: 'sr1_3', type: 'mcq', question: 'Awan di langit memiliki bentuk tidak beraturan dan tepian melengkung bebas. Jenis bidang awan termasuk...', options: ['Bidang beraturan', 'Bidang bebas / organis', 'Bidang geometris', 'Bidang kubistis'], answer: 1, explanation: 'Bentuk alam yang tidak kaku disebut bidang organis / bebas.' }],
+        [{ id: 'sr1_4', type: 'mcq', question: 'Atap rumah berbentuk segitiga, dindingnya persegi, dan pintunya persegi panjang. Jenis bidang penyusunnya adalah...', options: ['Lingkaran dan segitiga saja', 'Segitiga, persegi, dan persegi panjang', 'Lingkaran dan persegi panjang', 'Trapesium dan layang-layang'], answer: 1, explanation: 'Sesuai dengan deskripsi bentuk atap, dinding, dan pintu.' }],
+        [{ id: 'sr1_5', type: 'mcq', question: 'Warna daun yang hijau dan langit yang biru memberikan kesan...', options: ['Panas dan hangat', 'Sejuk dan dingin', 'Sedih dan gelap', 'Mewah dan berat'], answer: 1, explanation: 'Hijau dan biru adalah kelompok warna bernuansa alam yang sejuk.' }],
+        [{ id: 'sr1_6', type: 'mcq', question: 'Warna yang memberikan kesan ringan, bersih dan luas adalah...', options: ['Hitam dan coklat tua', 'Putih, kuning muda, dan biru muda', 'Merah marun dan ungu tua', 'Abu-abu gelap'], answer: 1, explanation: 'Warna-warna terang / pastel memberikan kesan ringan.' }],
+        [{ id: 'sr1_7', type: 'mcq', question: 'Kegiatan melihat, mengamati, menikmati, dan memberikan tanggapan terhadap sebuah karya seni disebut...', options: ['Berkarya', 'Apresiasi', 'Imajinasi', 'Kreasi'], answer: 1, explanation: 'Apresiasi adalah kegiatan menilai dan menikmati karya seni.' }],
+        [{ id: 'sr1_8', type: 'mcq', question: 'Gambar A penuh garis tegas dan warna cerah. Gambar B penuh garis halus dan warna lembut. Perbedaan visualnya terletak pada...', options: ['Ukuran kertasnya', 'Karakter garis dan kesan warnanya', 'Harga lukisannya', 'Pembuatnya'], answer: 1, explanation: 'Perbedaan utama ada pada karakter garis dan warnanya.' }],
+        [{ id: 'sr1_9', type: 'mcq', question: 'Temanmu sudah berusaha menggambar, namun hasilnya kurang rapi. Tanggapan yang baik adalah...', options: ['"Gambar kamu jelek sekali!"', '"Bagus, sudah ada kemajuan, coba diperjelas lagi garisnya ya."', '"Kamu tidak berbakat menggambar."', '"Buang saja gambar itu."'], answer: 1, explanation: 'Mengkritik harus dengan kalimat yang membangun dan sopan.' }],
+        [{ id: 'sr1_10', type: 'mcq', question: 'Tema poster "Ayo Jaga Kebersihan Laut". Kombinasi unsur yang paling tepat adalah...', options: ['Garis bergelombang biru dan kesan warna sejuk/biru', 'Garis vertikal kaku hitam dan merah', 'Garis zigzag hitam pekat', 'Garis putus-putus abu-abu'], answer: 0, explanation: 'Laut identik dengan ombak (bergelombang) dan warna sejuk (biru).' }],
+        [{ id: 'sr1_11', type: 'fill', question: 'Garis yang arahnya dari atas ke bawah atau dari bawah ke atas disebut garis...', acceptedAnswers: ['vertikal', 'tegak'], displayAnswer: 'Vertikal / Tegak', explanation: 'Garis tegak lurus disebut vertikal.' }],
+        [{ id: 'sr1_12', type: 'fill', question: 'Bangun datar yang memiliki 4 sisi sama panjang adalah...', acceptedAnswers: ['persegi', 'bujur sangkar', 'kotak'], displayAnswer: 'Persegi', explanation: 'Persegi memiliki 4 sisi yang sama panjang.' }],
+        [{ id: 'sr1_13', type: 'fill', question: 'Warna api yang menyala merah dan oranye memberikan kesan warna...', acceptedAnswers: ['panas', 'hangat'], displayAnswer: 'Panas / Hangat', explanation: 'Warna api (merah, oranye, kuning) memberi kesan panas.' }],
+        [{ id: 'sr1_14', type: 'fill', question: 'Garis tebal dan garis tipis perbedaannya terletak pada kategori...', acceptedAnswers: ['ukuran', 'ketebalan', 'besar kecil'], displayAnswer: 'Ukuran / Ketebalan', explanation: 'Tebal dan tipis adalah ukuran dari garis.' }],
+        [{ id: 'sr1_15', type: 'fill', question: 'Gabungan warna biru, hijau, dan ungu muda termasuk dalam kelompok kesan warna...', acceptedAnswers: ['sejuk', 'dingin'], displayAnswer: 'Sejuk / Dingin', explanation: 'Warna-warna alam yang tidak mencolok memberi kesan dingin.' }],
+        [{ id: 'sr1_16', type: 'fill', question: 'Permukaan meja tulis berbentuk... (sebutkan bidang dasarnya)', acceptedAnswers: ['persegi panjang', 'kotak panjang'], displayAnswer: 'Persegi Panjang', explanation: 'Meja tulis umumnya berbentuk persegi panjang.' }],
+        [{ id: 'sr1_17', type: 'fill', question: 'Garis yang berbentuk runcing naik turun seperti huruf W disebut garis...', acceptedAnswers: ['zigzag', 'zig zag'], displayAnswer: 'Zigzag', explanation: 'Garis patah-patah meruncing disebut zigzag.' }],
+        [{ id: 'sr1_18', type: 'fill', question: 'Gabungan dari banyak titik yang berderet memanjang akan membentuk unsur...', acceptedAnswers: ['garis'], displayAnswer: 'Garis', explanation: 'Titik yang ditarik memanjang menjadi garis.' }],
+        [{ id: 'sr1_19', type: 'fill', question: 'Saat memberikan pendapat tentang karya orang lain, gaya bahasa yang digunakan harus...', acceptedAnswers: ['sopan', 'baik', 'santun', 'halus'], displayAnswer: 'Sopan / Santun', explanation: 'Kritik harus disampaikan dengan sopan agar tidak menyinggung.' }],
+        [{ id: 'sr1_20', type: 'fill', question: 'Untuk menikmati keindahan lukisan, indra yang kita gunakan adalah indra...', acceptedAnswers: ['penglihatan', 'mata'], displayAnswer: 'Penglihatan (Mata)', explanation: 'Seni rupa dinikmati dengan melihat.' }],
+        [{ id: 'sr1_21', type: 'essay', question: 'Sebutkan 3 (tiga) contoh jenis garis yang berbeda!', displayAnswer: 'Garis lurus, garis lengkung, dan garis zigzag.', explanation: 'Itu adalah tiga jenis dasar garis.' }],
+        [{ id: 'sr1_22', type: 'essay', question: 'Gambarkan (sebutkan) 3 (tiga) contoh bentuk bidang beraturan!', displayAnswer: 'Persegi, Lingkaran, dan Segitiga.', explanation: 'Ketiganya adalah bidang beraturan/geometris.' }],
+        [{ id: 'sr1_23', type: 'essay', question: 'Sebutkan 3 (tiga) contoh warna yang memberikan kesan sejuk/dingin!', displayAnswer: 'Biru, Hijau, dan Ungu.', explanation: 'Warna-warna ini mengingatkan pada air dan daun.' }],
+        [{ id: 'sr1_24', type: 'essay', question: 'Mengapa kita tidak boleh menghina karya seni orang lain? Berikan alasanmu!', displayAnswer: 'Karena setiap orang memiliki proses belajar yang berbeda dan menghina dapat membuat orang tersebut sedih serta patah semangat.', explanation: 'Kita harus saling menghargai usaha.' }],
+        [{ id: 'sr1_25', type: 'essay', question: 'Kamu mendapat tema pemandangan alam (gunung, matahari, pohon). Tentukan bidang dan warna masing-masing objek!', displayAnswer: 'Gunung: bidang segitiga (warna biru/hijau). Matahari: bidang lingkaran (warna kuning/oranye). Pohon: bidang organis (warna hijau).', explanation: 'Penerapan unsur dasar seni rupa.' }]
+      ],
+      // SENI RUPA KATEGORI 2
+      senirupa2: [
+        [{ id: 'sr2_1', type: 'mcq', question: 'Unsur seni rupa yang paling dasar dan menjadi awal terbentuknya garis adalah...', options: ['Bidang', 'Titik', 'Warna', 'Tekstur'], answer: 1, explanation: 'Titik adalah unsur terkecil yang jika ditarik akan menjadi garis.' }],
+        [{ id: 'sr2_2', type: 'mcq', question: 'Garis yang memberi kesan keras, tajam dan semangat adalah garis...', options: ['Lengkung', 'Bergelombang', 'Zigzag', 'Mendatar'], answer: 2, explanation: 'Garis zigzag yang meruncing memberi kesan tajam dan keras.' }],
+        [{ id: 'sr2_3', type: 'mcq', question: 'Bentuk batu, daun, dan pulau di peta termasuk contoh bidang...', options: ['Beraturan', 'Bebas / Organis', 'Geometris', 'Kubus'], answer: 1, explanation: 'Bentuk alami yang meliuk bebas disebut organis.' }],
+        [{ id: 'sr2_4', type: 'mcq', question: 'Gambar mobil terdiri dari lingkaran, persegi panjang, dan persegi. Ini disebut...', options: ['Bidang tunggal', 'Gabungan bidang', 'Garis bebas', 'Warna primer'], answer: 1, explanation: 'Tersusun dari lebih dari satu bentuk bidang dasar.' }],
+        [{ id: 'sr2_5', type: 'mcq', question: 'Warna merah, oranye, kuning memberi kesan suhu...', options: ['Dingin', 'Panas / Hangat', 'Sejuk', 'Gelap'], answer: 1, explanation: 'Warna api dan matahari tergolong warna panas.' }],
+        [{ id: 'sr2_6', type: 'mcq', question: 'Jika ingin lukisanmu terkesan ringan dan melayang, kamu akan memakai warna...', options: ['Putih dan krem', 'Hitam pekat', 'Coklat tua', 'Merah marun'], answer: 0, explanation: 'Warna muda/pucat memberi ilusi ringan.' }],
+        [{ id: 'sr2_7', type: 'mcq', question: 'Istilah untuk kegiatan memberi penilaian dan penghargaan terhadap karya seni adalah...', options: ['Apresiasi karya seni', 'Plagiat', 'Dekorasi', 'Reproduksi'], answer: 0, explanation: 'Menghargai keindahan seni adalah apresiasi.' }],
+        [{ id: 'sr2_8', type: 'mcq', question: 'Lukisan A ramai karena banyak garis dan warna kontras. Lukisan B sepi. Perbedaannya ada pada unsur...', options: ['Komposisi / kepadatan unsur visual', 'Tanda tangan pelukis', 'Bingkai lukisan', 'Harga cat'], answer: 0, explanation: 'Cara menyusun elemen seni disebut komposisi visual.' }],
+        [{ id: 'sr2_9', type: 'mcq', question: 'Saat teman menunjukkan gambarnya yang belum jadi, respon terbaik adalah...', options: ['"Jelek, tidak usah dilanjutkan"', '"Keren, lanjutkan! Bagian pohonnya bisa ditambahkan warna hijau lagi biar hidup"', 'Diam dan ditertawakan', 'Mengambil gambarnya dan merusaknya'], answer: 1, explanation: 'Kritik apresiatif harus memotivasi dan memberi masukan positif.' }],
+        [{ id: 'sr2_10', type: 'mcq', question: 'Tema poster "Selamatkan Hutan" paling cocok menggunakan...', options: ['Garis lengkung bebas dan warna hijau, coklat, biru (sejuk/alam)', 'Garis lurus kaku dan warna hitam merah', 'Garis zigzag tajam dan neon menyilaukan', 'Hanya warna hitam putih'], answer: 0, explanation: 'Hutan identik dengan bentuk bebas dan warna alam yang sejuk.' }],
+        [{ id: 'sr2_11', type: 'fill', question: 'Garis yang membentang dari kiri ke kanan disebut horizontal, sedangkan dari atas ke bawah disebut...', acceptedAnswers: ['vertikal', 'tegak lurus'], displayAnswer: 'Vertikal', explanation: 'Vertikal adalah arah atas ke bawah.' }],
+        [{ id: 'sr2_12', type: 'fill', question: 'Bola jika dilihat dari satu sisi (secara 2 dimensi) akan tampak seperti bidang...', acceptedAnswers: ['lingkaran', 'bundar'], displayAnswer: 'Lingkaran', explanation: 'Proyeksi 2D dari bola adalah lingkaran.' }],
+        [{ id: 'sr2_13', type: 'fill', question: 'Warna biru pada es dan salju memberikan kesan warna...', acceptedAnswers: ['dingin', 'sejuk'], displayAnswer: 'Dingin / Sejuk', explanation: 'Biru masuk kategori warna bersuhu dingin.' }],
+        [{ id: 'sr2_14', type: 'fill', question: 'Garis lurus, lengkung, dan zigzag pembedanya adalah berdasarkan...', acceptedAnswers: ['bentuk', 'bentuknya', 'jenisnya'], displayAnswer: 'Bentuk (Bentuk Garis)', explanation: 'Itu adalah macam-macam bentuk dari garis.' }],
+        [{ id: 'sr2_15', type: 'fill', question: 'Merah, oranye, kuning dikelompokkan dalam warna panas. Biru, hijau, ungu dikelompokkan warna...', acceptedAnswers: ['dingin', 'sejuk'], displayAnswer: 'Dingin / Sejuk', explanation: 'Biru hijau ungu adalah keluarga warna dingin.' }],
+        [{ id: 'sr2_16', type: 'fill', question: 'Jam dinding bulat bentuk bidang dasarnya adalah...', acceptedAnswers: ['lingkaran', 'bundar'], displayAnswer: 'Lingkaran', explanation: 'Bentuk datar dari jam bulat adalah lingkaran.' }],
+        [{ id: 'sr2_17', type: 'fill', question: 'Garis yang melingkar-lingkar seperti rumah keong disebut garis...', acceptedAnswers: ['spiral'], displayAnswer: 'Spiral', explanation: 'Garis melingkar berpusat disebut spiral.' }],
+        [{ id: 'sr2_18', type: 'fill', question: 'Titik yang bergerak dan berderet akan membentuk...', acceptedAnswers: ['garis'], displayAnswer: 'Garis', explanation: 'Kumpulan titik sejajar menghasilkan garis.' }],
+        [{ id: 'sr2_19', type: 'fill', question: 'Dalam mengkritik karya teman, kita wajib menggunakan kata-kata yang ... dan tidak menyinggung.', acceptedAnswers: ['sopan', 'baik', 'halus'], displayAnswer: 'Sopan / Halus', explanation: 'Etika dasar dalam berapresiasi.' }],
+        [{ id: 'sr2_20', type: 'fill', question: 'Selain mata, menikmati karya seni musik menggunakan indra...', acceptedAnswers: ['pendengaran', 'telinga'], displayAnswer: 'Pendengaran (Telinga)', explanation: 'Musik dinikmati dengan telinga.' }],
+        [{ id: 'sr2_21', type: 'essay', question: 'Jelaskan perbedaan garis lurus, garis lengkung, dan garis zigzag! Beri contoh kesan masing-masing!', displayAnswer: 'Lurus berkesan kaku/tegas. Lengkung berkesan luwes/lembut. Zigzag berkesan tajam/keras.', explanation: 'Masing-masing bentuk garis memancarkan psikologi visual berbeda.' }],
+        [{ id: 'sr2_22', type: 'essay', question: 'Sebutkan (gambarlah) 3 bidang beraturan yang berbeda dan beri namanya!', displayAnswer: 'Lingkaran (bulat tak bersudut), Persegi (4 sisi sama), dan Segitiga (3 sisi).', explanation: 'Ketiganya adalah bentuk bidang matematis.' }],
+        [{ id: 'sr2_23', type: 'essay', question: 'Mengapa biru, hijau, ungu disebut warna sejuk? Beri contoh bendanya di alam!', displayAnswer: 'Karena warna tersebut memberikan kesan suhu yang dingin/menenangkan. Contoh di alam: air laut (biru), daun pohon (hijau).', explanation: 'Mewakili elemen air dan tanaman.' }],
+        [{ id: 'sr2_24', type: 'essay', question: 'Menurutmu, apa akibatnya jika kita suka menghina karya orang lain? Jelaskan 2 akibatnya!', displayAnswer: '1. Membuat teman sedih/marah. 2. Teman menjadi patah semangat untuk menggambar lagi.', explanation: 'Menghina akan membunuh kreativitas.' }],
+        [{ id: 'sr2_25', type: 'essay', question: 'Kamu akan membuat karya bertema Pantai. Tentukan: a) Objek, b) Bidang, c) Warna!', displayAnswer: 'a) Matahari, laut, pasir. b) Matahari=lingkaran, laut=persegi panjang, pasir=bidang bebas. c) Matahari=oranye, laut=biru, pasir=krem/coklat muda.', explanation: 'Jawaban bisa bervariasi sesuai logika kreativitas visual.' }]
       ]
     };
 
     // =========================================================================
     // APPLICATION STATE & UI LOGIC
     // =========================================================================
-    let currentClassLevel = 0; // 1 atau 2
+    let currentClassLevel = 0; 
     let currentSubject = '';
     let currentQuizSession = []; 
     let currentIndex = 0;
@@ -429,7 +485,9 @@
         { id: 'bahasaindonesia', name: 'B. Indonesia', icon: '📖', color: 'teal' },
         { id: 'pkn', name: 'Pend. Pancasila', icon: '🤝', color: 'rose' },
         { id: 'pjok', name: 'PJOK', icon: '🏃', color: 'emerald' },
-        { id: 'pabp', name: 'PABP', icon: '🕌', color: 'sky' }
+        { id: 'pabp', name: 'PABP', icon: '🕌', color: 'sky' },
+        { id: 'senirupa1', name: 'Seni Rupa (Kat. 1)', icon: '🎨', color: 'fuchsia' },
+        { id: 'senirupa2', name: 'Seni Rupa (Kat. 2)', icon: '🖌️', color: 'purple' }
       ]
     };
 
@@ -444,20 +502,18 @@
     const toast = document.getElementById('custom-toast');
     const toastMsg = document.getElementById('toast-message');
 
-    // 1. Fungsi menampilkan Toast Notifikasi
+    // 1. Toast Notifikasi
     function showToast(msg) {
       toastMsg.textContent = msg;
       toast.classList.remove('-translate-y-32', 'opacity-0');
       toast.classList.add('translate-y-0', 'opacity-100');
-      
-      // Sembunyikan setelah 3 detik
       setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('-translate-y-32', 'opacity-0');
       }, 3000);
     }
 
-    // 2. Fungsi buka layar password
+    // 2. Buka layar password
     function openPasswordScreen(classLvl) {
       currentClassLevel = classLvl;
       document.getElementById('pwd-class-label').textContent = classLvl;
@@ -467,10 +523,9 @@
       sPassword.classList.remove('hidden');
     }
 
-    // 3. Fungsi validasi password
+    // 3. Validasi password
     function verifyPassword() {
       const pwd = document.getElementById('class-password').value.trim();
-      
       let expectedPwd = currentClassLevel === 1 ? 'siompong' : 'zieljelek';
 
       if (pwd !== expectedPwd) {
@@ -478,7 +533,6 @@
         return;
       }
 
-      // Jika benar, lanjut ke daftar mapel kelas tersebut
       sPassword.classList.add('hidden');
       renderSubjects();
       sSelectSubject.classList.remove('hidden');
@@ -492,18 +546,20 @@
 
       const subjects = subjectUIData[currentClassLevel];
       subjects.forEach(subj => {
-        // Tailwind class mapping agar tidak hilang saat dipurge
         const borderColors = {
           'orange': 'border-orange-200 hover:border-orange-400',
           'amber': 'border-amber-200 hover:border-amber-400',
           'teal': 'border-teal-200 hover:border-teal-400',
           'rose': 'border-rose-200 hover:border-rose-400',
           'emerald': 'border-emerald-200 hover:border-emerald-400',
-          'sky': 'border-sky-200 hover:border-sky-400'
+          'sky': 'border-sky-200 hover:border-sky-400',
+          'fuchsia': 'border-fuchsia-200 hover:border-fuchsia-400',
+          'purple': 'border-purple-200 hover:border-purple-400'
         };
         const bgColors = {
           'orange': 'bg-orange-100', 'amber': 'bg-amber-100', 'teal': 'bg-teal-100',
-          'rose': 'bg-rose-100', 'emerald': 'bg-emerald-100', 'sky': 'bg-sky-100'
+          'rose': 'bg-rose-100', 'emerald': 'bg-emerald-100', 'sky': 'bg-sky-100',
+          'fuchsia': 'bg-fuchsia-100', 'purple': 'bg-purple-100'
         };
 
         const btn = document.createElement('button');
@@ -527,8 +583,8 @@
       
       document.getElementById('start-icon').textContent = subIcon;
       document.getElementById('start-title').textContent = `Kuis ${subName}`;
-      
       document.getElementById('badge-subject-name').textContent = subName;
+      
       document.getElementById('active-subject-badge').classList.remove('hidden');
       document.getElementById('active-subject-badge').classList.add('flex');
 
@@ -556,7 +612,6 @@
       userAnswers = {};
       currentIndex = 0;
 
-      // Randomizer
       const subjectData = bankSoal[currentSubject];
       currentQuizSession = subjectData.map((indicatorVariations, index) => {
         const randomVarIndex = Math.floor(Math.random() * indicatorVariations.length);
@@ -599,7 +654,7 @@
       ansCont.innerHTML = '';
       
       if (q.type === 'mcq') {
-        const labels = ['A', 'B', 'C'];
+        const labels = ['A', 'B', 'C', 'D']; // Updated untuk 4 opsi Seni Rupa
         q.options.forEach((opt, idx) => {
           const isSel = userAnswers[q.id] === idx;
           ansCont.innerHTML += `
@@ -706,7 +761,8 @@
     }
     
     function goToHome() {
-      // Sembunyikan semua layar
+      document.getElementById('class-password').value = '';
+      
       sPassword.classList.add('hidden');
       sSelectSubject.classList.add('hidden');
       sStart.classList.add('hidden'); 
@@ -714,11 +770,9 @@
       sResult.classList.add('hidden'); 
       sReview.classList.add('hidden');
       
-      // Hilangkan badge atas
       document.getElementById('active-subject-badge').classList.add('hidden');
       document.getElementById('active-subject-badge').classList.remove('flex');
       
-      // Tampilkan layar pilih kelas
       sSelectClass.classList.remove('hidden');
     }
     
